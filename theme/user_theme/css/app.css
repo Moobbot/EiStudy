@@ -1,0 +1,423 @@
+/* =================================================================
+  Table of contents
+  - Base + Fix Base Bootstrap
+  - Header
+  - Footer
+  - Banner
+  - Pages
+================================================================= */
+
+/* =================================================================
+  Base
+================================================================= */
+.wrapper,
+.wrapper-container {
+  height: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.title-1 {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.btn-showmore {
+  font-weight: 500;
+  background-color: var(--primary-color);
+  border: 2px solid var(--white);
+  color: var(--white);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  text-transform: uppercase;
+  padding: 12px 44px;
+}
+
+.btn-showmore:hover,
+.btn-showmore:focus,
+.btn-showmore:active {
+  background-color: var(--white);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* =================================================================
+  Header
+================================================================= */
+.user-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.user-header-container-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-header .btn-login {
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.user-corect .btn-login .icon-user {
+  border-radius: 9999px;
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  -ms-border-radius: 9999px;
+  -o-border-radius: 9999px;
+}
+
+/* =================================================================
+  Footer
+================================================================= */
+.footer .title-1 {
+  position: relative;
+  margin-bottom: 7px;
+}
+
+.footer .title-1::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -45px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  transform: translateY(-25%);
+  -webkit-transform: translateY(-25%);
+  -moz-transform: translateY(-25%);
+  -ms-transform: translateY(-25%);
+  -o-transform: translateY(-25%);
+}
+
+.footer-container-inner {
+  padding: 35px 0;
+}
+
+.footer-logo {
+  margin-bottom: 30px;
+}
+
+.footer ul {
+  padding-left: 3rem;
+}
+
+.div-detail li {
+  margin-bottom: 10px;
+}
+
+.div-detail .title-1::before {
+  background-image: url("../icon/location.png");
+}
+
+.div-email .title-1::before {
+  background-image: url("../icon/message.png");
+}
+
+.div-phone .title-1::before {
+  background-image: url("../icon/call.png");
+}
+
+.div-fanpage .title-1::before {
+  background-image: url("../icon/facebook.png");
+}
+
+.div-location .title-1::before {
+  background-image: url("../icon/location_pin.png");
+}
+
+.div-fanpage .title-1,
+.div-location .title-1 {
+  display: flex;
+  align-content: center;
+}
+
+.div-fanpage .title-1::before,
+.div-location .title-1::before {
+  position: relative;
+  left: 0;
+  margin-right: 18px;
+}
+
+.div-contact li:first-child {
+  margin-bottom: 45px;
+}
+
+/* =================================================================
+  Banner
+================================================================= */
+
+.banner-img {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.banner-img-inner {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  width: 36%;
+}
+
+.banner-detail {
+  width: 100%;
+}
+
+.banner-detail h1 {
+  font-weight: 700;
+  font-size: 70px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.banner-detail p {
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--white);
+}
+
+/* Carousel Bootstrap5 */
+.banner .carousel-indicators {
+  margin-bottom: 27px;
+}
+
+.banner .carousel-indicators button {
+  width: 13px;
+  height: 13px;
+  border: none;
+  border-radius: 9999px;
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  -ms-border-radius: 9999px;
+  -o-border-radius: 9999px;
+  background-color: var(--white);
+  opacity: 1;
+}
+
+.banner .carousel-indicators .active {
+  width: 24px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--white);
+}
+
+/* =================================================================
+  Pages
+================================================================= */
+/* page-home */
+.page-home .banner-img {
+  height: 60vh;
+  min-height: 690px;
+}
+
+.page-home .banner-img-inner {
+  min-width: 520px;
+}
+
+.page-home .main-content .studytest-img {
+  height: 550px;
+}
+
+.studytest {
+  background-color: var(--secondary-color);
+}
+
+.studytest-img {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.studytest-img::before {
+  content: '';
+  background-image: url('../image/gray-img.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.2;
+}
+
+.studytest-detail-wrap {
+  /* padding-top: 110px; */
+  padding: 15% 0;
+  height: 100%;
+  position: relative;
+}
+
+.studytest-detail {
+  width: 68%;
+  /* padding-left: 27px; */
+  /* margin-left: 40px; */
+  padding-left: 3.8%;
+  margin-left: 5.7%;
+  position: relative;
+}
+
+.studytest-detail::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* height: 191px; */
+  height: 106%;
+  width: 0px;
+  border: 3px solid var(--primary-color);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.studytest-detail .btn-showmore {
+  margin-top: 8px;
+}
+
+.studytest-tile {
+  color: var(--primary-color);
+  font-weight: 500;
+  /* font-size: 30px; */
+  font-size: 2em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.studytest-text {
+  margin: 14px 0;
+}
+
+.studytest-detail-wrap .bg-img {
+  position: absolute;
+  right: 33px;
+  bottom: 12px;
+}
+
+.studytest-item-img {
+  padding: 0;
+}
+
+.studytest .studytest-item:nth-child(even) .studytest-item-img {
+  order: 2;
+}
+
+/* page-exams */
+.page-exams .banner-img {
+  height: 40vh;
+  min-height: 470px;
+}
+
+.list-exams-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.list-exams-title.title-1 {
+  font-size: 2em;
+  padding: 30px 0;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.list-exams-item {
+  width: 360px;
+  height: 250px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  color: var(--white);
+  margin-bottom: 30px;
+}
+
+.list-exams-item .card-img-overlay {
+  top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0px 0px 5px 5px;
+}
+
+.list-exams-item .card-title {
+  font-size: 18px;
+}
+
+.list-exams-item .btn-showmore {
+  padding: 10px 32px;
+  text-transform: inherit;
+}
+
+.edit-pagination {
+  margin: 0 15px;
+}
+
+.edit-pagination .page-link {
+  background-color: transparent;
+}
+
+.edit-pagination .current-page {
+  color: #000000;
+  background-color: var(--white);
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+}
+
+/* Login page */
+.page-login {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-content-container-inner {
+  height: 100%;
+
+}
+
+.login-left {
+  height: 100%;
+}
