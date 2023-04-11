@@ -5,39 +5,38 @@
   src: url("../font/static/Quicksand-Bold.woff") format("woff"),
     url("../font/static/Quicksand-Bold.woff2") format("woff2");
   font-weight: 700;
-  font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Quicksand";
   src: url("../font/static/Quicksand-SemiBold.woff") format("woff"),
     url("../font/static/Quicksand-SemiBold.woff2") format("woff2");
   font-weight: 600;
-  font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Quicksand";
   src: url("../font/static/Quicksand-Medium.woff") format("woff"),
     url("../font/static/Quicksand-Medium.woff2") format("woff2");
   font-weight: 500;
-  font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Quicksand";
   src: url("../font/static/Quicksand-Regular.woff") format("woff"),
     url("../font/static/Quicksand-Regular.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Quicksand";
   src: url("../font/static/Quicksand-Light.woff") format("woff"),
     url("../font/static/Quicksand-Light.woff2") format("woff2");
   font-weight: 300;
-  font-style: normal;
   font-display: swap;
 }
 
@@ -48,6 +47,7 @@
   /* --secondary-color-2: rgba(10, 31, 119, 0.8); */
   --primary-background: #e5e5e5;
   --white: #ffffff;
+  --gray: #BABABA;
 }
 
 body {
@@ -60,19 +60,23 @@ body {
   overflow-x: hidden;
   text-align: justify;
 }
+
 [class*="icon-"] {
   width: 25px;
   height: 25px;
   padding-right: 18px;
 }
+
 .background-white {
   background-color: var(--white);
   color: var(--primary-color);
 }
+
 .background-primary {
   background-color: var(--primary-color);
   color: var(--white);
 }
+
 .background-primary a {
   color: var(--white);
 }

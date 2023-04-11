@@ -10,9 +10,14 @@
 /* =================================================================
   Base
 ================================================================= */
+.hidden {
+  overflow: hidden;
+}
+
 .wrapper,
 .wrapper-container {
   height: 100%;
+  width: 100%;
 }
 
 li {
@@ -74,14 +79,22 @@ li {
   align-items: center;
 }
 
-.user-header .btn-login {
+.btn-login {
   color: var(--primary-color);
   display: flex;
   align-items: center;
   text-transform: uppercase;
 }
 
-.user-corect .btn-login .icon-user {
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:focus-visible {
+  color: var(--primary-color);
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-login .icon-user {
   border-radius: 9999px;
   -webkit-border-radius: 9999px;
   -moz-border-radius: 9999px;
@@ -129,23 +142,23 @@ li {
 }
 
 .div-detail .title-1::before {
-  background-image: url("../icon/location.png");
+  background-image: url("../icon/location.svg");
 }
 
 .div-email .title-1::before {
-  background-image: url("../icon/message.png");
+  background-image: url("../icon/message.svg");
 }
 
 .div-phone .title-1::before {
-  background-image: url("../icon/call.png");
+  background-image: url("../icon/call.svg");
 }
 
 .div-fanpage .title-1::before {
-  background-image: url("../icon/facebook.png");
+  background-image: url("../icon/facebook.svg");
 }
 
 .div-location .title-1::before {
-  background-image: url("../icon/location_pin.png");
+  background-image: url("../icon/location-pin.svg");
 }
 
 .div-fanpage .title-1,
@@ -413,11 +426,135 @@ li {
   width: 100%;
 }
 
-.main-content-container-inner {
+.block-login {
+  width: 100%;
   height: 100%;
+  margin: 0;
+}
 
+.block-login .btn-back {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
 }
 
 .login-left {
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(195, 34, 112, 0.6);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login-right {
+  background-color: #F6F6F6;
+  /* padding-left: 52px; */
+  /* padding-top: 86px; */
+  padding-left: 3.6%;
+  padding-right: 3.6%;
+  padding-top: 6%;
+}
+
+.login-middle {
+  margin-top: 83px;
+  margin-bottom: 68px;
+  text-align: center;
+  /* font-weight: 500; */
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.login-middle img {
+  width: 428px;
+  height: 104px;
+}
+
+.login-middle p {
+  margin: 38px 0;
+}
+
+.div-input {
+  display: flex;
+  background: var(--white);
+  /* Xám */
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.div-input input {
+  padding-left: 0;
+}
+
+.div-input input,
+.div-input input:hover,
+.div-input input:focus,
+.div-input input:focus-visible,
+.div-input input:active {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+.div-input span {
+  color: var(--gray);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.div-input span[class*='ti-'] {
+  margin-right: 15px;
+}
+
+.div-input .btn-showpass {
+  font-size: 25px;
+}
+
+.div-input ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--gray);
+  font-weight: 500px;
+  font-size: 18px;
+  /* opacity: 1; */
+  /* Firefox */
+}
+
+.div-input :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--gray);
+}
+
+.div-input ::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--gray);
+}
+
+.block-login .btn-login {
+  font-size: 20px;
+  font-weight: 500;
+  width: 100%;
+  box-sizing: border-box;
+  /* Tím */
+  color: var(--white);
+  background: var(--primary-color);
+  /* Trắng */
+  border: 2px solid var(--white);
+  border-radius: 10px;
+  text-transform: inherit;
+  text-align: center;
+  justify-content: center;
+}
+
+.forgot-password-link {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.22222;
+  /* identical to box height */
+  color: #000000;
 }
