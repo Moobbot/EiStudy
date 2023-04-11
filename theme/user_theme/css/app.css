@@ -542,7 +542,7 @@ li {
   box-sizing: border-box;
   /* Tím */
   color: var(--white);
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   /* Trắng */
   border: 2px solid var(--white);
   border-radius: 10px;
@@ -557,4 +557,15 @@ li {
   line-height: 1.22222;
   /* identical to box height */
   color: #000000;
+}
+
+.resend {
+  color: var(--primary-color);
+}
+
+.otp-form input {
+  width: 62px;
+  height: 55px;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
 }

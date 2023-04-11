@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="./theme/plugin/bootstrap-5.0.2-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="./theme/plugin/icons-1.10.4/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="./theme/plugin/themify-icons-font/themify-icons.css">
+  <link rel="stylesheet" href="./theme/user_theme/css/alter.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/template.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/app.css" />
+</head>
+
+<body class="page-login" style="background-image: url('./uploads/background_login.png')">
+  <div class="wrapper">
+    <div class="wrapper-container">
+      <div class="block-login row">
+        <div class="login-left col-md-6">
+          <img src="./uploads/logo/logo-white-432x105.png" alt="Logo EI Germeny" class="img-fluid" />
+        </div>
+        <div class="login-right col-md-6">
+          <form action="" id="otp-form">
+            <div class="login-top">
+              <a href="./index.html" class="btn btn-back">
+                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng nhập</a>
+            </div>
+            <div class="login-middle">
+              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI Germeny" class="img-fluid" />
+              <p class="edit-text">Nhập mã OTP đã được gửi về địa chỉ mail của bạn để
+                thay đổi mật khẩu.</p>
+            </div>
+            <div class="login-middle-after">
+              <div class="otp-form">
+                <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                  <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1">
+                  <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1">
+                  <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1">
+                  <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1">
+                  <input class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1">
+                  <input class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1">
+                </div>
+                <!-- Submit button -->
+                <button type="button" class="btn btn-login mb-4">Đăng nhập</button>
+                <!-- Register buttons -->
+                <div class="text-center forgot-password-link">
+                  <p>Chưa nhận được mã<a class="resend" href="#"> Gửi lại</a></p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="theme/plugin/jquery-3.6.4.min.js"></script>
+<script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="theme/user_theme/javascript/app.js"></script>
+<script>
+  (function ($) {
+    $('.btn-showpass').click(function (e) {
+      e.preventDefault();
+      if ($(this).siblings('input').attr('type') == 'password') {
+        $(this).siblings('input[type="password"]').attr('type', 'text');
+      } else {
+        $(this).siblings('input[type="text"]').attr('type', 'password');
+      }
+      $(this).find('i').toggleClass('bi-eye');
+      $(this).find('i').toggleClass('bi-eye-slash');
+    });
+  })(window.jQuery);
+</script>
+
+</html>
