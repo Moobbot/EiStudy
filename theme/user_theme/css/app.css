@@ -441,15 +441,20 @@ li {
 }
 
 .login-left {
+  flex: 0 0 auto;
+  width: 54.654%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(195, 34, 112, 0.6);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 
 .login-right {
+  flex: 0 0 auto;
+  width: 45.346%;
   background-color: #F6F6F6;
   /* padding-left: 52px; */
   /* padding-top: 86px; */
@@ -459,6 +464,9 @@ li {
 }
 
 .login-middle {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 83px;
   margin-bottom: 68px;
   text-align: center;
@@ -563,9 +571,26 @@ li {
   color: var(--primary-color);
 }
 
-.otp-form input {
+/* otp */
+#otp-form .login-middle {
+  margin-bottom: 45px;
+}
+
+.otp-inputs .inputs {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.otp-inputs input {
   width: 62px;
   height: 55px;
   border: 1px solid var(--gray);
   border-radius: 10px;
+  text-align: center;
+}
+
+.otp-inputs input:last-child {
+  margin-right: 0;
 }

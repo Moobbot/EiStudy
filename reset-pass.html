@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OTP</title>
+  <title>Home</title>
   <link rel="stylesheet" href="./theme/plugin/bootstrap-5.0.2-dist/css/bootstrap.css" />
   <link rel="stylesheet" href="./theme/plugin/icons-1.10.4/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./theme/plugin/themify-icons-font/themify-icons.css">
@@ -22,33 +22,36 @@
           <img src="./uploads/logo/logo-white-432x105.png" alt="Logo EI Germeny" class="img-fluid" />
         </div>
         <div class="login-right">
-          <form action="" id="otp-form">
+          <form action="" id="reset-form">
             <div class="login-top">
-              <a href="./login.html" class="btn btn-back">
-                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Quên mật khẩu</a>
+              <a href="./index.html" class="btn btn-back">
+                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng nhập</a>
             </div>
             <div class="login-middle">
               <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI Germeny" class="img-fluid" />
-              <p class="edit-text">Nhập mã OTP đã được gửi về địa chỉ mail của bạn để
-                thay đổi mật khẩu.</p>
+              <p class="edit-text">Thiết lập mật khẩu mới của bạn.</p>
             </div>
             <div class="login-middle-after">
-              <div class="otp-inputs">
-                <div id="otp" class="inputs">
-                  <input class="form-control" type="text" id="first" maxlength="1">
-                  <input class="form-control" type="text" id="second" maxlength="1">
-                  <input class="form-control" type="text" id="third" maxlength="1">
-                  <input class="form-control" type="text" id="fourth" maxlength="1">
-                  <input class="form-control" type="text" id="fifth" maxlength="1">
-                  <input class="form-control" type="text" id="sixth" maxlength="1">
+              <div class="login-form">
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <div class="div-input">
+                    <span class="ti-lock"></span>
+                    <input type="password" id="formPassword" class="form-control" placeholder="Mật khẩu" />
+                    <span class="btn-showpass"><i class="bi bi-eye"></i></span>
+                  </div>
+                </div>
+                <!-- RePassword input -->
+                <div class="form-outline mb-4">
+                  <div class="div-input">
+                    <span class="ti-lock"></span>
+                    <input type="password" id="formRePassword" class="form-control" placeholder="Nhập lại mật khẩu" />
+                    <img src="./theme/user_theme/icon/eye-close.svg" alt="">
+                    <span class="btn-showpass"><i class="bi bi-eye"></i></span>
+                  </div>
                 </div>
                 <!-- Submit button -->
-                <!-- <button type="button" class="btn btn-login mb-4">Tiếp tục</button> -->
-                <a class="btn btn-login mb-4" href="./reset-pass.html">Tiếp tục</a>
-                <!-- Register buttons -->
-                <div class="text-center forgot-password-link">
-                  <p>Chưa nhận được mã<a class="resend" href="#"> Gửi lại</a></p>
-                </div>
+                <button type="button" class="btn btn-login mb-4">OK</button>
               </div>
             </div>
           </form>
@@ -61,6 +64,12 @@
 <script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 <script src="theme/user_theme/javascript/app.js"></script>
 <script>
+  function ShowHide(id_form1, id_form2) {
+    let form1 = $(id_form1);
+    let form2 = $(id_form2);
+    form1.toggle();
+    form2.toggle();
+  }
   (function ($) {
     $('.btn-showpass').click(function (e) {
       e.preventDefault();
