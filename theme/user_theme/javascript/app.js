@@ -4,6 +4,9 @@
 // Write your JavaScript code.
 (function ($) {
   "use strict";
+  $(window).on("load", function () {
+    $("#preloader").fadeOut("slow");
+  });
   $(document).ready(function () {
     var bannerCarousel = document.querySelector("#bannerCarousel");
     var carousel = new bootstrap.Carousel(bannerCarousel, {
@@ -12,12 +15,12 @@
       wrap: false,
     });
   });
-  $(document).mouseup(function (e) {});
+  $(document).mouseup(function (e) { });
   window.addEventListener("mouseover", function (e) {
     var container = $("name");
     if (!container.is(e.target) && container.has(e.target).length === 0) {
       //code here
     }
   });
-  window.addEventListener("load", function () {});
+  window.addEventListener("load", function () { });
 })(window.jQuery);

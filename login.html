@@ -14,9 +14,15 @@
   <link rel="stylesheet" href="./theme/user_theme/css/app.css" />
 </head>
 
-<body class="page-login" style="background-image: url('./uploads/background_login.png')">
+<body class="page-login" style="background-image:
+    url('./uploads/background_login.png')">
   <div class="wrapper">
     <div class="wrapper-container">
+      <div id="preloader">
+        <div class="spinner-border" role="status" style="background-image: url('./uploads/logo/logo-preload.svg');">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
       <div class="block-login row">
         <div class="login-left">
           <img src="./uploads/logo/logo-white-432x105.png" alt="Logo EI Germeny" class="img-fluid" />
@@ -28,7 +34,8 @@
                 <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng nhập</a>
             </div>
             <div class="login-middle">
-              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI Germeny" class="img-fluid" />
+              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI
+                  Germeny" class="img-fluid" />
               <p class="edit-text">Chào mừng bạn đã đến với EI Germany!</p>
             </div>
             <div class="login-middle-after">
@@ -36,14 +43,14 @@
                 <!-- Email/phone input -->
                 <div class="form-outline mb-4">
                   <div class="div-input">
-                    <span class="ti-email"></span>
+                    <span class="icon ti-email"></span>
                     <input type="text" id="formAccount" class="form-control" placeholder="Email/Số điện thoại" />
                   </div>
                 </div>
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                   <div class="div-input">
-                    <span class="ti-lock"></span>
+                    <span class="icon ti-lock"></span>
                     <input type="password" id="formPassword" class="form-control" placeholder="Mật khẩu" />
                     <img src="./theme/user_theme/icon/eye-close.svg" alt="">
                     <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
@@ -51,10 +58,13 @@
                 </div>
                 <!-- Submit button -->
                 <button type="button" class="btn btn-login mb-4">Đăng nhập</button>
-                <!-- Register buttons -->
                 <div class="text-center forgot-password">
+                  <!-- Forgot password buttons -->
                   <p><a onclick="ShowHide('#signin-form','#forgot-password-form')" class="forgot-password-link">Quên mật
                       khẩu?</a></p>
+                  <!-- Register buttons -->
+                  <p>Chưa có tài khoản?<a onclick="ShowHide('#signin-form','#register-form')"
+                      class="forgot-password-link"> Đăng ký</a></p>
                 </div>
               </div>
             </div>
@@ -65,20 +75,75 @@
                 <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Quên mật khẩu</a>
             </div>
             <div class="login-middle">
-              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI Germeny" class="img-fluid" />
-              <p class="edit-text">Hãy nhập email của bạn để bắt đầu lấy lại mật khẩu.</p>
+              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI
+                  Germeny" class="img-fluid" />
+              <p class="edit-text">Hãy nhập email của bạn để bắt đầu lấy lại
+                mật khẩu.</p>
             </div>
             <div class="forgot-password-form">
               <!-- Email/phone input -->
               <div class="form-outline mb-4">
                 <div class="div-input">
-                  <span class="ti-email"></span>
+                  <span class="icon ti-email"></span>
                   <input type="email" id="formAccount" class="form-control" placeholder="Email" />
                 </div>
               </div>
               <!-- Submit button -->
               <!-- <button type="button" class="btn btn-login mb-4">Tiếp tục</button> -->
-              <a type="button" class="btn btn-login mb-4" href="./otp.html">Tiếp tục</a>
+              <a type="button" class="btn btn-login mb-4" href="./otp.html">Tiếp
+                tục</a>
+            </div>
+          </form>
+          <form action="" id="register-form" style="display: none;">
+            <div class="login-top">
+              <a onclick="ShowHide('#signin-form','#register-form')" class="btn btn-back">
+                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng ký</a>
+            </div>
+            <div class="login-middle">
+              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI
+                  Germeny" class="img-fluid" />
+              <p class="edit-text">Chào mừng bạn đã đến với EI Germany!</p>
+            </div>
+            <div class="register-form">
+              <!-- Name input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon"><i class="bi bi-person"></i></span>
+                  <input type="email" id="formAccount" class="form-control" placeholder="Ex: Nguyễn Văn A" />
+                </div>
+              </div><!-- Email input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon-email ti-email"></span>
+                  <input type="email" id="formAccount" class="form-control" placeholder="Email" />
+                </div>
+              </div>
+              <!--Phone input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon"><i class="bi bi-telephone"></i> </span>
+                  <input type="email" id="formAccount" class="form-control" placeholder="Phone" />
+                </div>
+              </div>
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon ti-lock"></span>
+                  <input type="password" id="formPassword" class="form-control" placeholder="Mật khẩu" />
+                  <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
+                </div>
+              </div>
+              <!-- Repeat Password input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon ti-lock"></span>
+                  <input type="password" id="formRePassword" class="form-control" placeholder="Nhập lại mật khẩu" />
+                  <img src="./theme/user_theme/icon/eye-close.svg" alt="">
+                  <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
+                </div>
+              </div>
+              <!-- Submit button -->
+              <button type="button" class="btn btn-login mb-4">Đăng ký</button>
             </div>
           </form>
         </div>
@@ -107,6 +172,7 @@
       $(this).find('i').toggleClass('bi-eye');
       $(this).find('i').toggleClass('bi-eye-slash');
     });
+
   })(window.jQuery);
 </script>
 

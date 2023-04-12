@@ -68,6 +68,36 @@ i {
   color: var(--primary-color);
 }
 
+/* preloader */
+
+#preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: #fefefe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#preloader.close {
+  display: none;
+}
+
+#preloader .spinner-border {
+  width: 150px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+}
+
 /* =================================================================
   Header
 ================================================================= */
@@ -325,7 +355,7 @@ i {
 .studytest-detail {
   width: 68%;
   /* padding-left: 27px; */
-  /* margin-left: 40px; */
+  /* margin-left : 40px; */
   padding-left: 3.8%;
   margin-left: 5.7%;
   position: relative;
@@ -336,7 +366,7 @@ i {
   position: absolute;
   left: 0;
   top: 0;
-  /* height: 191px; */
+  /* height                 : 191px; */
   height: 106%;
   width: 0px;
   border: 3px solid var(--primary-color);
@@ -353,7 +383,7 @@ i {
 .studytest-tile {
   color: var(--primary-color);
   font-weight: 500;
-  /* font-size: 30px; */
+  /* font-size  : 30px; */
   font-size: 2em;
   margin-bottom: 14px;
   text-transform: uppercase;
@@ -478,8 +508,8 @@ i {
   flex: 0 0 auto;
   width: 45.346%;
   background-color: #F6F6F6;
-  /* padding-left: 52px; */
-  /* padding-top: 86px; */
+  /* padding-left : 52px; */
+  /* padding-top  : 86px; */
   padding-left: 3.6%;
   padding-right: 3.6%;
   padding-top: 6%;
@@ -536,14 +566,12 @@ i {
   font-size: 20px;
   display: flex;
   align-items: center;
-}
-
-.div-input span[class*='ti-'] {
   margin-right: 15px;
 }
 
 .div-input .btn-showpass {
   font-size: 25px;
+  margin-right: 0;
 }
 
 .div-input ::placeholder {
@@ -551,7 +579,7 @@ i {
   color: var(--gray);
   font-weight: 500px;
   font-size: 18px;
-  /* opacity: 1; */
+  /* opacity : 1; */
   /* Firefox */
 }
 
@@ -587,6 +615,12 @@ i {
   line-height: 1.22222;
   /* identical to box height */
   color: #000000;
+}
+
+.forgot-password-link:hover,
+.forgot-password-link:focus,
+.forgot-password-link:active {
+  color: var(--primary-color);
 }
 
 .resend {
@@ -627,4 +661,9 @@ i {
   font-size: 100px;
   text-align: center;
   margin-bottom: 70px;
+}
+
+/* register-form */
+#register-form .login-middle {
+  margin-bottom: 50px;
 }
