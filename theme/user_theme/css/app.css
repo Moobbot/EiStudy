@@ -20,8 +20,17 @@
   width: 100%;
 }
 
+a {
+  cursor: pointer;
+}
+
 li {
   list-style: none;
+}
+
+i {
+  line-height: 1;
+
 }
 
 .fw-500 {
@@ -84,8 +93,21 @@ li {
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  margin: 20px 0;
 }
 
+.btn-back {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.btn-back:hover,
+.btn-back:focus,
+.btn-back:focus-visible,
 .btn-login:hover,
 .btn-login:focus,
 .btn-login:focus-visible {
@@ -100,6 +122,14 @@ li {
   -moz-border-radius: 9999px;
   -ms-border-radius: 9999px;
   -o-border-radius: 9999px;
+}
+
+.btn-back {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
 }
 
 /* =================================================================
@@ -432,14 +462,6 @@ li {
   margin: 0;
 }
 
-.block-login .btn-back {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
-}
-
 .login-left {
   flex: 0 0 auto;
   width: 54.654%;
@@ -593,4 +615,16 @@ li {
 
 .otp-inputs input:last-child {
   margin-right: 0;
+}
+
+/* reset-pass-success */
+.re-pass-success .login-middle {
+  margin-bottom: 50px;
+}
+
+.div-success {
+  color: var(--primary-color);
+  font-size: 100px;
+  text-align: center;
+  margin-bottom: 70px;
 }

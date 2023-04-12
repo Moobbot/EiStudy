@@ -24,8 +24,8 @@
         <div class="login-right">
           <form action="" id="reset-form">
             <div class="login-top">
-              <a href="./index.html" class="btn btn-back">
-                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng nhập</a>
+              <a href="./otp.html" class="btn btn-back">
+                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Quên mật khẩu</a>
             </div>
             <div class="login-middle">
               <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI Germeny" class="img-fluid" />
@@ -38,7 +38,7 @@
                   <div class="div-input">
                     <span class="ti-lock"></span>
                     <input type="password" id="formPassword" class="form-control" placeholder="Mật khẩu" />
-                    <span class="btn-showpass"><i class="bi bi-eye"></i></span>
+                    <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
                   </div>
                 </div>
                 <!-- RePassword input -->
@@ -47,11 +47,12 @@
                     <span class="ti-lock"></span>
                     <input type="password" id="formRePassword" class="form-control" placeholder="Nhập lại mật khẩu" />
                     <img src="./theme/user_theme/icon/eye-close.svg" alt="">
-                    <span class="btn-showpass"><i class="bi bi-eye"></i></span>
+                    <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
                   </div>
                 </div>
                 <!-- Submit button -->
-                <button type="button" class="btn btn-login mb-4">OK</button>
+                <!-- <button type="button" class="btn btn-login mb-4">OK</button> -->
+                <a class="btn btn-login mb-4" href="./reset-pass-success.html">OK</a>
               </div>
             </div>
           </form>
@@ -64,12 +65,6 @@
 <script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 <script src="theme/user_theme/javascript/app.js"></script>
 <script>
-  function ShowHide(id_form1, id_form2) {
-    let form1 = $(id_form1);
-    let form2 = $(id_form2);
-    form1.toggle();
-    form2.toggle();
-  }
   (function ($) {
     $('.btn-showpass').click(function (e) {
       e.preventDefault();
