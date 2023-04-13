@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="./theme/plugin/bootstrap-5.0.2-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="./theme/plugin/icons-1.10.4/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="./theme/plugin/themify-icons-font/themify-icons.css">
+  <link rel="stylesheet" href="./theme/user_theme/css/alter.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/template.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/app.css" />
+  <style>
+    .w3-example {
+      background-color: #E7E9EB;
+      border-radius: 5px;
+      padding: 0.01em 16px;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+    }
+
+    .w3-example {
+      padding: 8px 20px;
+      margin: 24px -20px;
+      box-shadow: none !important;
+    }
+
+    .w3-code {
+      width: auto;
+      background-color: #fff;
+      color: #000;
+      padding: 8px 12px;
+      word-wrap: break-word;
+      margin-top: 16px !important;
+      margin-bottom: 16px !important;
+      border-left: 4px solid #04AA6D;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body class="page-login">
+  <div class="wrapper">
+    <div class="wrapper-container">
+      <h1 class="text-center">Localstorage Object</h1>
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="w3-example">
+          <h3>Example</h3>
+          <div class="w3-code notranslate jsHigh"><span class="jscolor" style="color:black"><span class="jsnumbercolor"
+                style="color:red">
+              </span> <span class="commentcolor" style="color:green">// Store<br></span>localStorage.<span
+                class="jspropertycolor" style="color:black">setItem</span>(<span class="jsstringcolor"
+                style="color:brown">"lastname"</span>, <span class="jsstringcolor"
+                style="color:brown">"Smith"</span>);<br><br><span class="commentcolor" style="color:green">//
+                Retrieve<br></span><span class="jsnumbercolor" style="color:red">
+              </span> document.<span class="jspropertycolor" style="color:black">getElementById</span>(<span
+                class="jsstringcolor" style="color:brown">"result"</span>).<span class="jspropertycolor"
+                style="color:black">innerHTML</span> = localStorage.<span class="jspropertycolor"
+                style="color:black">getItem</span>(<span class="jsstringcolor"
+                style="color:brown">"lastname"</span>);<span class="jsnumbercolor" style="color:red">
+              </span> </span></div>
+        </div>
+        <div class="w3-example">
+          <h3>Example</h3>
+          <div class="w3-code notranslate jsHigh"><span class="jscolor" style="color:black"><span class="jsnumbercolor"
+                style="color:red">
+              </span> <span class="jskeywordcolor" style="color:mediumblue">if</span> (localStorage.<span
+                class="jspropertycolor" style="color:black">clickcount</span>) {<br>&nbsp; localStorage.<span
+                class="jspropertycolor" style="color:black">clickcount</span> = Number(localStorage.<span
+                class="jspropertycolor" style="color:black">clickcount</span>) + <span class="jsnumbercolor"
+                style="color:red">1</span>;<br><span class="jsnumbercolor" style="color:red">
+              </span> } <span class="jskeywordcolor" style="color:mediumblue">else</span> {<br>&nbsp; localStorage.<span
+                class="jspropertycolor" style="color:black">clickcount</span> = <span class="jsnumbercolor"
+                style="color:red">1</span>;<br>}<br><span class="jsnumbercolor" style="color:red">
+              </span> document.<span class="jspropertycolor" style="color:black">getElementById</span>(<span
+                class="jsstringcolor" style="color:brown">"result"</span>).<span class="jspropertycolor"
+                style="color:black">innerHTML</span> = <span class="jsstringcolor" style="color:brown">"You have clicked
+                the button "</span> +<br>
+              localStorage.<span class="jspropertycolor" style="color:black">clickcount</span> + <span
+                class="jsstringcolor" style="color:brown">" time(s)."</span>; </span></div>
+        </div>
+      </div>
+      <h1 class="text-center">The sessionStorage Object</h1>
+      <div class="d-flex align-items-center justify-content-center">
+        <p>The sessionStorage object is equal to the localStorage object, except that it stores the data for only one
+          session. The data is deleted when the user closes the specific browser tab.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="theme/plugin/jquery-3.6.4.min.js"></script>
+<script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="theme/user_theme/javascript/app.js"></script>
+<script>
+  (function ($) {
+    if (typeof (Storage) !== "undefined") {
+      // Code for localStorage/sessionStorage.
+      // OBJECT => JSON.stringify => localStorage => JSON.parse => OBJECT
+      let user = {
+        fullname: 'Haha',
+        email: 'fsdfds'
+      }
+      //save data to localStorage
+      localStorage.setItem('USER_INFO', JSON.stringify(user));
+      //Get data from localStorage
+      let data = JSON.parse(localStorage.getItem('USER_INFO'));
+      //Remove data of localStorage
+      localStorage.removeItem('USER_INFO');
+    } else {
+      // Sorry! No Web Storage support..
+    }
+  })(window.jQuery);
+</script>
+
+</html>

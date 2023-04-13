@@ -1,85 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quên mật khẩu</title>
-    <link rel="stylesheet"
-      href="./theme/plugin/bootstrap-5.0.2-dist/css/bootstrap.css" />
-    <link rel="stylesheet"
-      href="./theme/plugin/icons-1.10.4/font/bootstrap-icons.css" />
-    <link rel="stylesheet"
-      href="./theme/plugin/themify-icons-font/themify-icons.css">
-    <link rel="stylesheet" href="./theme/user_theme/css/alter.css" />
-    <link rel="stylesheet" href="./theme/user_theme/css/template.css" />
-    <link rel="stylesheet" href="./theme/user_theme/css/app.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quên mật khẩu</title>
+  <link rel="stylesheet" href="./theme/plugin/bootstrap-5.0.2-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="./theme/plugin/icons-1.10.4/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="./theme/plugin/themify-icons-font/themify-icons.css">
+  <link rel="stylesheet" href="./theme/user_theme/css/alter.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/template.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/app.css" />
+</head>
 
-  <body class="page-login" style="background-image:
+<body class="page-login" style="background-image:
     url('./uploads/background_login.png')">
-    <div class="wrapper">
-      <div class="wrapper-container">
+  <div class="wrapper">
+    <div class="wrapper-container">
       <div id="preloader">
         <div class="spinner-border" role="status" style="background-image: url('./uploads/logo/logo-preload.svg');">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
-        <div class="block-login row">
-          <div class="login-left">
-            <img src="./uploads/logo/logo-white-432x105.png" alt="Logo EI
+      <div class="block-login row">
+        <div class="login-left">
+          <img src="./uploads/logo/logo-white-432x105.png" alt="Logo EI
               Germeny" class="img-fluid" />
-          </div>
-          <div class="login-right">
-            <form action="" id="reset-form">
-              <div class="login-top">
-                <a href="./otp.html" class="btn btn-back">
-                  <img src="./theme/user_theme/icon/left-arrow-0.png" alt=""
-                    class="icon-back" />Quên mật khẩu</a>
-              </div>
-              <div class="login-middle">
-                <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI
+        </div>
+        <div class="login-right">
+          <form action="" id="reset-form">
+            <div class="login-top">
+              <a href="./otp.html" class="btn btn-back">
+                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Quên mật khẩu</a>
+            </div>
+            <div class="login-middle">
+              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI
                   Germeny" class="img-fluid" />
-                <p class="edit-text">Thiết lập mật khẩu mới của bạn.</p>
-              </div>
-              <div class="login-middle-after">
-                <div class="login-form">
-                  <!-- Password input -->
-                  <div class="form-outline mb-4">
-                    <div class="div-input">
-                      <span class="icon ti-lock"></span>
-                      <input type="password" id="formPassword"
-                        class="form-control" placeholder="Mật khẩu" />
-                      <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
-                    </div>
+              <p class="edit-text">Thiết lập mật khẩu mới của bạn.</p>
+            </div>
+            <div class="login-middle-after">
+              <div class="login-form">
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <div class="div-input">
+                    <span class="icon ti-lock"></span>
+                    <input type="password" id="formPassword" class="form-control" placeholder="Mật khẩu"
+                      name="password" />
+                    <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
                   </div>
-                  <!-- Repeat Password input -->
-                  <div class="form-outline mb-4">
-                    <div class="div-input">
-                      <span class="icon ti-lock"></span>
-                      <input type="password" id="formRepeatPassword"
-                        class="form-control" placeholder="Nhập lại mật khẩu" />
-                      <img src="./theme/user_theme/icon/eye-close.svg" alt="">
-                      <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
-                    </div>
-                  </div>
-                  <!-- Submit button -->
-                  <!-- <button type="button" class="btn btn-login mb-4">OK</button> -->
-                  <a class="btn btn-login mb-4"
-                    href="./reset-pass-success.html">OK</a>
                 </div>
+                <!-- Repeat Password input -->
+                <div class="form-outline mb-4">
+                  <div class="div-input">
+                    <span class="icon ti-lock"></span>
+                    <input type="password" id="formRepeatPassword" name="re_password" class="form-control"
+                      placeholder="Nhập lại mật khẩu" />
+                    <img src="./theme/user_theme/icon/eye-close.svg" alt="">
+                    <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
+                  </div>
+                </div>
+                <!-- Submit button -->
+                <!-- <button type="button" class="btn btn-login mb-4">OK</button> -->
+                <a class="btn btn-login mb-4" href="./reset-pass-success.html">OK</a>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </body>
-  <script src="theme/plugin/jquery-3.6.4.min.js"></script>
-  <script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
-  <script src="theme/user_theme/javascript/app.js"></script>
-  <script>
+  </div>
+</body>
+<script src="theme/plugin/jquery-3.6.4.min.js"></script>
+<script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="theme/user_theme/javascript/app.js"></script>
+<script>
   (function ($) {
     $('.btn-showpass').click(function (e) {
       e.preventDefault();
