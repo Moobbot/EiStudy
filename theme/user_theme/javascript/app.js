@@ -14,6 +14,7 @@
       pause: "hover",
       wrap: false,
     });
+    
   });
   $(document).mouseup(function (e) { });
   window.addEventListener("mouseover", function (e) {

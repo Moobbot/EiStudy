@@ -47,15 +47,15 @@
                   <div class="div-input">
                     <span class="icon ti-email"></span>
                     <input type="text" id="formAccount" class="form-control" placeholder="Email/Số điện thoại"
-                      name="account" autofocus required />
+                      name="account" autofocus />
                   </div>
                 </div>
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                   <div class="div-input">
                     <span class="icon ti-lock"></span>
-                    <input type="password" id="formPassword" class="form-control" placeholder="Mật khẩu" name="password"
-                      required />
+                    <input type="password" id="formPassword" class="form-control" placeholder="Mật khẩu"
+                      name="password" />
                     <img src="./theme/user_theme/icon/eye-close.svg" alt="">
                     <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
                   </div>
@@ -162,6 +162,7 @@
 <script src="theme/plugin/jquery-3.6.4.min.js"></script>
 <script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 <script src="theme/user_theme/javascript/app.js"></script>
+<script src="theme/user_theme/javascript/form.js"></script>
 <script>
   function ShowHide(id_form1, id_form2) {
     let form1 = $(id_form1);
@@ -177,149 +178,6 @@
     }
   }
 
-  // SaveAcc
-  function saveAcc(id_form) {
-    var user = {
-      fullname: '',
-      email: '',
-      phone: '',
-      password: '',
-      re_password: ''
-    }
-    $(id_form).find('input').each(function () {
-      var input = $(this); // This is the jquery object of the input, do what you will
-      let name = input.attr('name');
-      let val = input.val();
-      Object.keys(user)
-        .forEach(function eachKey(key) {
-          // console.log(key + '-' + user[key]); //key + value
-          if (name == key) {
-            user[key] = val;
-          }
-        });
-    });
-    //save data to localStorage
-    localStorage.setItem('USER_INFO', JSON.stringify(user));
-    return true;
-  }
-
-  // Check form submit
-  function validateForm(e, id_form) {
-    e.preventDefault();// chặn hoạt động mặc định của form
-    // xử lý form
-    // Validate lowercase letters
-    let lowerCaseLetters = /[a-z]/g;
-    // Validate capital letters
-    let upperCaseLetters = /[A-Z]/g;
-    // Validate numbers
-    var numbers = /[0-9]/g;
-    // Validate phone
-    var phoneformat = /(0[3|5|7|8|9])+([0-9]{8})|(\+84)+([0-9]{9})\b/;
-    // Validate email
-    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    let check_number = 0;
-    $(id_form).find('input').each(function () {
-      var input = $(this); // This is the jquery object of the input, do what you will
-      let type = input.attr('type');
-      let name = input.attr('name');
-      let val = input.val();
-      switch (type) {
-        case 'email':
-          // code block
-          if (val.length == 0) {
-            alert("Vui lòng nhập Email!");
-            check_number = 1;
-            input.val('');
-            return false;
-          }
-          if (!mailformat.test(val)) {
-            alert("Email không đúng đinh dạnh!");
-            check_number = 1;
-            input.val('');
-            return false;
-          }
-          break;
-        case 'password':
-          // code block
-          if (name == 're_password') {
-            if (val.length == 0) {
-              alert("Vui lòng nhập xác nhận mật khẩu!");
-              check_number = 1;
-              input.val('');
-              return false;
-            }
-            // Validate Password/RePassword
-            if (val == input.siblings('input[name="password"]').val()) {
-              alert("Mật khẩu xác nhận không giống!");
-              check_number = 1;
-              input.val('');
-              return false;
-            }
-          }
-          else
-            if (val.length == 0) {
-              alert("Vui lòng nhập mật khẩu!");
-              check_number = 1;
-              input.val('');
-              return false;
-            }
-          break;
-        case 'text':
-          if (name == 'fullname') {
-            if (val.length == 0) {
-              alert("Vui lòng nhập tên của bạn!");
-              check_number = 1;
-              input.val('');
-              return false;
-            }
-          }
-          break;
-        case 'tel':
-          if (val.length == 0) {
-            alert("Vui lòng nhập số điện thoại của bạn!");
-            check_number = 1;
-            input.val('');
-            return false;
-          }
-          if (!phoneformat.test(val)) {
-            alert("Số điện thoại không đúng đinh dạnh!");
-            check_number = 1;
-            input.val('');
-            return false;
-          }
-          break;
-        // default:
-        // code block
-      }
-    });
-    if (check_number == 0) {
-      if (saveAcc(id_form)) {
-        alert('Tạo tài khoản thành công.');
-      } else {
-        alert('Có lỗi xảy ra. Vui lòng liên hệ tổng đài.');
-      }
-    }
-  }
-
-  function checkAcc(e, id_form) {
-    e.preventDefault();// chặn hoạt động mặc định của form
-    // xử lý form
-    let acc = $(id_form).find('input[id="formAccount"]').val();
-    let pass = $(id_form).find('input[id="formPassword"]').val();
-    //Get data from localStorage
-    let data = JSON.parse(localStorage.getItem('USER_INFO'));
-    if (acc == data['phone'] || acc == data['email']) {
-      if (pass == data['password']) {
-        //save data to localStorage
-        sessionStorage.setItem('USER_INFO', JSON.stringify(data));
-        window.location.replace("home.html");
-      } else {
-        alert('Mật khẩu không chính xác!');
-      }
-    } else {
-      alert('Không tìm thấy tài khoản này!');
-    }
-  }
   (function ($) {
     $('.btn-showpass').click(function (e) {
       e.preventDefault();

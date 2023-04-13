@@ -546,6 +546,7 @@ i {
 }
 
 .div-input {
+  position: relative;
   display: flex;
   background: var(--white);
   /* Xám */
@@ -674,4 +675,21 @@ i {
 /* register-form */
 #register-form .login-middle {
   margin-bottom: 50px;
+}
+
+.form-warning {
+  border: 1px solid rgb(255, 41, 41) !important;
+}
+
+.form-outline {
+  position: relative;
+}
+
+.error-mes {
+  position: absolute;
+  left: 10px;
+  bottom: -20px;
+  color: rgb(255, 41, 41) !important;
+  font-size: 13px !important;
+  font-weight: 500;
 }
