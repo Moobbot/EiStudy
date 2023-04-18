@@ -33,11 +33,9 @@ function saveAcc(id_form) {
   localStorage.setItem('USER_INFO', JSON.stringify(user));
   return true;
 }
-
-// Check form submit
-function validateForm(e, id_form) {
-  e.preventDefault();// chặn hoạt động mặc định của form
-  // xử lý form
+// Test input
+function test_input(input, type, name, val) {
+  let check_number = 0;
   // Validate lowercase letters
   let lowerCaseLetters = /[a-z]/g;
   // Validate capital letters
@@ -48,122 +46,107 @@ function validateForm(e, id_form) {
   var phoneformat = /(0[3|5|7|8|9])+([0-9]{8})|(\+84)+([0-9]{9})\b/;
   // Validate email
   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (input.parent().find('.error-mes').length) {
+    input.parent().removeClass('form-warning');
+    input.parent().find('.error-mes').remove();
+  }
+  // console.log(type + '--' + name);
+  switch (type) {
+    case 'email':
+      // code block
+      if (val.length == 0) {
+        check_number = 1;
+        if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+        input.parent().append('<span class="error-mes">Vui lòng nhập Email!</span>');
+      }
+      else if (!mailformat.test(val)) {
+        check_number = 1;
+        if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+        input.parent().append('<span class="error-mes">Email không đúng đinh dạnh!</span>');
+      }
+      break;
+    case 'tel':
+      if (val.length == 0) {
+        check_number = 1;
+        if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+        input.parent().append('<span class="error-mes">Vui lòng nhập số điện thoại của bạn!</span>');
+      }
+      else if (!phoneformat.test(val)) {
+        check_number = 1;
+        if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+        input.parent().append('<span class="error-mes">Số điện thoại không đúng đinh dạnh</span>');
+      }
+      break;
+    case 'password':
+      // code block
+      if (name == 're_password') {
+        if (val.length === 0) {
+          check_number = 1;
+          if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+          if (input.parent().find('.error-mes').length) {
+          }
+          input.parent().append('<span class="error-mes">Vui lòng nhập xác nhận mật khẩu!</span>');
+          // return false;
+        }
+        // Validate Password/RePassword
+        else if (val !== input.siblings('input[name="password"]').val()) {
+          check_number = 1;
+          if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+          if (input.parent().find('.error-mes').length) {
+          }
+          input.parent().append('<span class="error-mes">Mật khẩu xác nhận không giống!</span>');
+          // return false;
+        }
+      }
+      else
+        if (val.length == 0) {
+          check_number = 1;
+          if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+          if (input.parent().find('.error-mes').length) {
+          }
+          input.parent().append('<span class="error-mes">Vui lòng nhập mật khẩu!</span>');
+          // return false;
+        }
+      break;
+    case 'text':
+      if (name == 'fullname') {
+        if (val.length == 0) {
+          check_number = 1;
+          if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
+          if (input.parent().find('.error-mes').length) {
+          }
+          input.parent().append('<span class="error-mes">Vui lòng nhập tên của bạn!</span>');
+          // return false;
+        }
+      }
+      break;
+    // default:
+    // code block
+  }
+  return check_number;
+}
+// Check form submit
+function validateForm(e, id_form) {
+  e.preventDefault();// chặn hoạt động mặc định của form
+  // xử lý form
   let check_number = 0;
   $(id_form).find('input').each(function () {
     var input = $(this);
     let type = input.attr('type');
     let name = input.attr('name');
     let val = input.val();
-    if (input.parent().find('.error-mes').length) {
-      input.parent().removeClass('form-warning');
-      input.parent().find('.error-mes').remove();
-    }
-    switch (type) {
-      case 'email':
-        // code block
-        if (val.length == 0) {
-          check_number = 1;
-          input.parent().addClass('form-warning');
-          input.val('');
-          input.parent().append('<span class="error-mes">Vui lòng nhập Email!</span>');
-          // return false;
-        }
-        else if (!mailformat.test(val)) {
-          check_number = 1;
-          input.parent().addClass('form-warning');
-          input.val('');
-          if (input.parent().find('.error-mes').length) {
-            input.parent().find('.error-mes').remove();
-          }
-          input.parent().append('<span class="error-mes">Email không đúng đinh dạnh!</span>');
-          // return false;
-        }
-        break;
-      case 'password':
-        // code block
-        if (name == 're_password') {
-          if (val.length === 0) {
-            check_number = 1;
-            input.parent().addClass('form-warning');
-            input.val('');
-            if (input.parent().find('.error-mes').length) {
-              input.parent().find('.error-mes').remove();
-            }
-            input.parent().append('<span class="error-mes">Vui lòng nhập xác nhận mật khẩu!</span>');
-            // return false;
-          }
-          // Validate Password/RePassword
-          else if (val != input.siblings('input[name="password"]').val()) {
-            check_number = 1;
-            input.parent().addClass('form-warning');
-            input.val('');
-            if (input.parent().find('.error-mes').length) {
-              input.parent().find('.error-mes').remove();
-            }
-            input.parent().append('<span class="error-mes">Mật khẩu xác nhận không giống!</span>');
-            // return false;
-          }
-        }
-        else
-          if (val.length == 0) {
-            check_number = 1;
-            input.parent().addClass('form-warning');
-            input.val('');
-            if (input.parent().find('.error-mes').length) {
-              input.parent().find('.error-mes').remove();
-            }
-            input.parent().append('<span class="error-mes">Vui lòng nhập mật khẩu!</span>');
-            // return false;
-          }
-        break;
-      case 'text':
-        if (name == 'fullname') {
-          if (val.length == 0) {
-            check_number = 1;
-            input.parent().addClass('form-warning');
-            input.val('');
-            if (input.parent().find('.error-mes').length) {
-              input.parent().find('.error-mes').remove();
-            }
-            input.parent().append('<span class="error-mes">Vui lòng nhập tên của bạn!</span>');
-            // return false;
-          }
-        }
-        break;
-      case 'tel':
-        if (val.length == 0) {
-          check_number = 1;
-          input.parent().addClass('form-warning');
-          input.val('');
-          if (input.parent().find('.error-mes').length) {
-            input.parent().find('.error-mes').remove();
-          }
-          input.parent().append('<span class="error-mes">Vui lòng nhập số điện thoại của bạn!</span>');
-          // return false;
-        }
-        else if (!phoneformat.test(val)) {
-          check_number = 1;
-          input.parent().addClass('form-warning');
-          input.val('');
-          if (input.parent().find('.error-mes').length) {
-            input.parent().find('.error-mes').remove();
-          }
-          input.parent().append('<span class="error-mes">Số điện thoại không đúng đinh dạnh</span>');
-          // return false;
-        }
-        break;
-      // default:
-      // code block
-    }
+    check_number = test_input(input, type, name, val);
+    $(input).keyup(function (e) {
+      check_number = test_input(input, type, name, val);
+    });
   });
-  if (check_number == 0) {
+  if (check_number === 0) {
     $(id_form).find('input').removeClass('form-warning');
     if (saveAcc(id_form)) {
       alert('Tạo tài khoản thành công.');
       window.location.replace("login.html");
-    } else {
-      alert('Có lỗi xảy ra. Vui lòng liên hệ tổng đài.');
-    }
+    } else alert('Có lỗi xảy ra. Vui lòng liên hệ tổng đài.');
+
   }
 }
 
@@ -176,15 +159,11 @@ function checkAcc(e, id_form) {
   let pass_val = pass.val();
   if (acc_val.length == 0) {
     acc.parent().addClass('form-warning');
-    if (acc.parent().find('.error-mes').length) {
-      acc.parent().find('.error-mes').remove();
-    }
+    if (acc.parent().find('.error-mes').length) acc.parent().find('.error-mes').remove();
     acc.parent().append('<span class="error-mes">Vui lòng nhập tài khoản!</span>');
   } else if (pass_val.length == 0) {
     pass.parent().addClass('form-warning');
-    if (acc.parent().find('.error-mes').length) {
-      acc.parent().find('.error-mes').remove();
-    }
+    if (acc.parent().find('.error-mes').length) acc.parent().find('.error-mes').remove();
     pass.parent().append('<span class="error-mes">Vui lòng nhập mật khẩu!</span>');
   } else {
     //Get data from localStorage
@@ -196,16 +175,12 @@ function checkAcc(e, id_form) {
         window.location.replace("home.html");
       } else {
         pass.parent().addClass('form-warning');
-        if (pass.parent().find('.error-mes').length) {
-          pass.parent().find('.error-mes').remove();
-        }
+        if (pass.parent().find('.error-mes').length) pass.parent().find('.error-mes').remove();
         pass.parent().append('<span class="error-mes">Mật khẩu không chính xác!</span>');
       }
     } else {
       acc.parent().addClass('form-warning');
-      if (acc.parent().find('.error-mes').length) {
-        acc.parent().find('.error-mes').remove();
-      }
+      if (acc.parent().find('.error-mes').length) acc.parent().find('.error-mes').remove();
       acc.parent().append('<span class="error-mes">Không tìm thấy tài khoản này!</span >');
     }
   }
