@@ -52,6 +52,9 @@ function validateForm(e, id_form) {
           check_number = 1;
           input.parent().addClass('form-warning');
           input.val('');
+          if (input.parent().find('.error-mes').length) {
+            input.parent().find('.error-mes').remove();
+          }
           input.parent().append('<span class="error-mes">Vui lòng nhập Email!</span>');
           // return false;
         }
@@ -59,6 +62,9 @@ function validateForm(e, id_form) {
           check_number = 1;
           input.parent().addClass('form-warning');
           input.val('');
+          if (input.parent().find('.error-mes').length) {
+            input.parent().find('.error-mes').remove();
+          }
           input.parent().append('<span class="error-mes">Email không đúng đinh dạnh!</span>');
           // return false;
         }
@@ -70,6 +76,9 @@ function validateForm(e, id_form) {
             check_number = 1;
             input.parent().addClass('form-warning');
             input.val('');
+            if (input.parent().find('.error-mes').length) {
+              input.parent().find('.error-mes').remove();
+            }
             input.parent().append('<span class="error-mes">Vui lòng nhập xác nhận mật khẩu!</span>');
             // return false;
           }
@@ -78,6 +87,9 @@ function validateForm(e, id_form) {
             check_number = 1;
             input.parent().addClass('form-warning');
             input.val('');
+            if (input.parent().find('.error-mes').length) {
+              input.parent().find('.error-mes').remove();
+            }
             input.parent().append('<span class="error-mes">Mật khẩu xác nhận không giống!</span>');
             // return false;
           }
@@ -87,6 +99,9 @@ function validateForm(e, id_form) {
             check_number = 1;
             input.parent().addClass('form-warning');
             input.val('');
+            if (input.parent().find('.error-mes').length) {
+              input.parent().find('.error-mes').remove();
+            }
             input.parent().append('<span class="error-mes">Vui lòng nhập mật khẩu!</span>');
             // return false;
           }
@@ -97,6 +112,9 @@ function validateForm(e, id_form) {
             check_number = 1;
             input.parent().addClass('form-warning');
             input.val('');
+            if (input.parent().find('.error-mes').length) {
+              input.parent().find('.error-mes').remove();
+            }
             input.parent().append('<span class="error-mes">Vui lòng nhập tên của bạn!</span>');
             // return false;
           }
@@ -107,6 +125,9 @@ function validateForm(e, id_form) {
           check_number = 1;
           input.parent().addClass('form-warning');
           input.val('');
+          if (input.parent().find('.error-mes').length) {
+            input.parent().find('.error-mes').remove();
+          }
           input.parent().append('<span class="error-mes">Vui lòng nhập số điện thoại của bạn!</span>');
           // return false;
         }
@@ -114,6 +135,9 @@ function validateForm(e, id_form) {
           check_number = 1;
           input.parent().addClass('form-warning');
           input.val('');
+          if (input.parent().find('.error-mes').length) {
+            input.parent().find('.error-mes').remove();
+          }
           input.parent().append('<span class="error-mes">Số điện thoại không đúng đinh dạnh</span>');
           // return false;
         }
@@ -142,9 +166,15 @@ function checkAcc(e, id_form) {
   let pass_val = pass.val();
   if (acc_val.length == 0) {
     acc.parent().addClass('form-warning');
+    if (acc.parent().find('.error-mes').length) {
+      acc.parent().find('.error-mes').remove();
+    }
     acc.parent().append('<span class="error-mes">Vui lòng nhập tài khoản!</span>');
   } else if (pass_val.length == 0) {
     pass.parent().addClass('form-warning');
+    if (acc.parent().find('.error-mes').length) {
+      acc.parent().find('.error-mes').remove();
+    }
     pass.parent().append('<span class="error-mes">Vui lòng nhập mật khẩu!</span>');
   } else {
     //Get data from localStorage
@@ -156,13 +186,19 @@ function checkAcc(e, id_form) {
         window.location.replace("home.html");
       } else {
         pass.parent().addClass('form-warning');
+        if (pass.parent().find('.error-mes').length) {
+          pass.parent().find('.error-mes').remove();
+        }
         pass.parent().append('<span class="error-mes">Mật khẩu không chính xác!</span>');
       }
     } else {
       acc.parent().addClass('form-warning');
-      acc.parent().append('<span class="error-mes">Không tìm thấy tài khoản này!</span > ');
+      if (acc.parent().find('.error-mes').length) {
+        acc.parent().find('.error-mes').remove();
+      }
+      acc.parent().append('<span class="error-mes">Không tìm thấy tài khoản này!</span >');
     }
   }
 }
 // acc.parent().removeClass('form-warning');
-//     acc.parent().remove('span.error-mes');
+//     acc.parent().find('.error-mes').remove();
