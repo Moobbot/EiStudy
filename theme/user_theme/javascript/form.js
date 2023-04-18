@@ -8,6 +8,15 @@ function saveAcc(id_form) {
     password: '',
     re_password: ''
   }
+  /*
+  user = {
+    fullname: 'Nguyễn Văn A',
+    email: 'abc@gmail.com',
+    phone: '0373456789',
+    password: '1',
+    re_password: '1'
+  }
+  */
   $(id_form).find('input').each(function () {
     var input = $(this); // This is the jquery object of the input, do what you will
     let name = input.attr('name');
@@ -45,6 +54,10 @@ function validateForm(e, id_form) {
     let type = input.attr('type');
     let name = input.attr('name');
     let val = input.val();
+    if (input.parent().find('.error-mes').length) {
+      input.parent().removeClass('form-warning');
+      input.parent().find('.error-mes').remove();
+    }
     switch (type) {
       case 'email':
         // code block
@@ -52,9 +65,6 @@ function validateForm(e, id_form) {
           check_number = 1;
           input.parent().addClass('form-warning');
           input.val('');
-          if (input.parent().find('.error-mes').length) {
-            input.parent().find('.error-mes').remove();
-          }
           input.parent().append('<span class="error-mes">Vui lòng nhập Email!</span>');
           // return false;
         }
@@ -72,7 +82,7 @@ function validateForm(e, id_form) {
       case 'password':
         // code block
         if (name == 're_password') {
-          if (val.length == 0) {
+          if (val.length === 0) {
             check_number = 1;
             input.parent().addClass('form-warning');
             input.val('');
@@ -83,7 +93,7 @@ function validateForm(e, id_form) {
             // return false;
           }
           // Validate Password/RePassword
-          else if (val == input.siblings('input[name="password"]').val()) {
+          else if (val != input.siblings('input[name="password"]').val()) {
             check_number = 1;
             input.parent().addClass('form-warning');
             input.val('');
@@ -147,7 +157,7 @@ function validateForm(e, id_form) {
     }
   });
   if (check_number == 0) {
-    $(id_form).find('input').removeClass('form-warning')
+    $(id_form).find('input').removeClass('form-warning');
     if (saveAcc(id_form)) {
       alert('Tạo tài khoản thành công.');
       window.location.replace("login.html");
