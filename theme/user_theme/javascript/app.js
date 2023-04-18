@@ -5,19 +5,20 @@
 (function ($) {
   "use strict";
   $(document).ready(function () {
-    var bannerCarousel = document.querySelector("#bannerCarousel");
+    // var bannerCarousel = document.querySelector("#bannerCarousel");
+    var bannerCarousel = $("#bannerCarousel");
     var carousel = new bootstrap.Carousel(bannerCarousel, {
-      interval: 2000,
+      interval: 4000,
       pause: "hover",
       wrap: false,
     });
   });
-  $(document).mouseup(function (e) {});
+  $(document).mouseup(function (e) { });
   window.addEventListener("mouseover", function (e) {
     var container = $("name");
     if (!container.is(e.target) && container.has(e.target).length === 0) {
       //code here
     }
   });
-  window.addEventListener("load", function () {});
+  window.addEventListener("load", function () { });
 })(window.jQuery);

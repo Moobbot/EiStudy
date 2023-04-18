@@ -55,7 +55,7 @@ body {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.25;
-  background: var(--primary-background);
+  background-color: var(--primary-background);
   color: #000000;
   overflow-x: hidden;
   text-align: justify;
