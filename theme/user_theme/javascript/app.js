@@ -10,12 +10,14 @@
   $(document).ready(function () {
     // var bannerCarousel = document.querySelector("#bannerCarousel");
     var bannerCarousel = $("#bannerCarousel");
-    var carousel = new bootstrap.Carousel(bannerCarousel, {
-      interval: 4000,
-      pause: "hover",
-      wrap: false,
-    });
-    
+    if (bannerCarousel.length) {
+      var carousel = new bootstrap.Carousel(bannerCarousel, {
+        interval: 4000,
+        pause: "hover",
+        wrap: false,
+      });
+    }
+
   });
   $(document).mouseup(function (e) { });
   window.addEventListener("mouseover", function (e) {

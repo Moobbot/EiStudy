@@ -46,10 +46,10 @@ function test_input(input, type, name, val) {
   var phoneformat = /(0[3|5|7|8|9])+([0-9]{8})|(\+84)+([0-9]{9})\b/;
   // Validate email
   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (input.parent().find('.error-mes').length) {
-    input.parent().removeClass('form-warning');
-    input.parent().find('.error-mes').remove();
-  }
+  // if (input.parent().hasClass('form-warning')) {
+  input.parent().removeClass('form-warning');
+  input.parent().find('.error-mes').remove();
+  // }
   // console.log(type + '--' + name);
   switch (type) {
     case 'email':
@@ -89,7 +89,7 @@ function test_input(input, type, name, val) {
           // return false;
         }
         // Validate Password/RePassword
-        else if (val !== input.siblings('input[name="password"]').val()) {
+        else if (val != input.parents('.register-form').find('input[name="password"]').val()) {
           check_number = 1;
           if (!input.parent().hasClass('form-warning')) input.parent().addClass('form-warning');
           if (input.parent().find('.error-mes').length) {
@@ -135,9 +135,10 @@ function validateForm(e, id_form) {
     let type = input.attr('type');
     let name = input.attr('name');
     let val = input.val();
+    console.log(val);
     check_number = test_input(input, type, name, val);
     $(input).keyup(function (e) {
-      check_number = test_input(input, type, name, val);
+      check_number = test_input(input, type, name, input.val());
     });
   });
   if (check_number === 0) {
