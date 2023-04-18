@@ -4,6 +4,9 @@
 // Write your JavaScript code.
 (function ($) {
   "use strict";
+  $(window).on("load", function () {
+    $("#preloader").fadeOut("slow");
+  });
   $(document).ready(function () {
     // var bannerCarousel = document.querySelector("#bannerCarousel");
     var bannerCarousel = $("#bannerCarousel");
@@ -12,6 +15,7 @@
       pause: "hover",
       wrap: false,
     });
+    
   });
   $(document).mouseup(function (e) { });
   window.addEventListener("mouseover", function (e) {

@@ -18,6 +18,11 @@
 <body class="page-login" style="background-image: url('./uploads/background_login.png')">
   <div class="wrapper">
     <div class="wrapper-container">
+      <div id="preloader">
+        <div class="spinner-border" role="status" style="background-image: url('./uploads/logo/logo-preload.svg');">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
       <div class="block-login row">
         <div class="login-left">
           <img src="./uploads/logo/logo-white-432x105.png" alt="Logo EI Germeny" class="img-fluid" />
@@ -48,7 +53,7 @@
                 <a class="btn btn-login mb-4" href="./reset-pass.html">Tiếp tục</a>
                 <!-- Register buttons -->
                 <div class="text-center forgot-password-link">
-                  <p>Chưa nhận được mã<a class="resend" href="#"> Gửi lại</a></p>
+                  <p>Chưa nhận được mã?<a class="resend" href="#"> Gửi lại</a></p>
                 </div>
               </div>
             </div>
@@ -61,19 +66,5 @@
 <script src="theme/plugin/jquery-3.6.4.min.js"></script>
 <script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 <script src="theme/user_theme/javascript/app.js"></script>
-<script>
-  (function ($) {
-    $('.btn-showpass').click(function (e) {
-      e.preventDefault();
-      if ($(this).siblings('input').attr('type') == 'password') {
-        $(this).siblings('input[type="password"]').attr('type', 'text');
-      } else {
-        $(this).siblings('input[type="text"]').attr('type', 'password');
-      }
-      $(this).find('i').toggleClass('bi-eye');
-      $(this).find('i').toggleClass('bi-eye-slash');
-    });
-  })(window.jQuery);
-</script>
 
 </html>
