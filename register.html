@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="./theme/plugin/bootstrap-5.0.2-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="./theme/plugin/icons-1.10.4/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="./theme/plugin/themify-icons-font/themify-icons.css">
+  <link rel="stylesheet" href="./theme/user_theme/css/alter.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/template.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/app.css" />
+  <link rel="stylesheet" href="./theme/user_theme/css/responsive.css" />
+</head>
+
+<body class="page-login" style="background-image:
+    url('./uploads/background_login.png')">
+  <div class="wrapper">
+    <div class="wrapper-container">
+      <div id="preloader">
+        <div class="spinner-border" role="status" style="background-image:
+            url('./uploads/logo/logo-preload.svg');">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <div class="block-login row">
+        <div class="login-left">
+          <img src="./uploads/logo/logo-white-432x105.png" alt="Logo EI
+              Germeny" class="img-fluid" />
+        </div>
+        <div class="login-right">
+          <form action="" id="register-form" onsubmit="validateForm(event,'#register-form')">
+            <div class="login-top">
+              <a href="login.html" class="btn btn-back">
+                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng ký</a>
+            </div>
+            <div class="login-middle">
+              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI
+                  Germeny" class="img-fluid" />
+              <p class="edit-text">Chào mừng bạn đã đến với EI Germany!</p>
+            </div>
+            <div class="register-form">
+              <!-- Name input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon"><i class="bi bi-person"></i></span>
+                  <input type="text" id="registerName" class="form-control" placeholder="Ex: Nguyễn Văn A"
+                    name="fullname" autofocus />
+                </div>
+              </div><!-- Email input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon-email ti-email"></span>
+                  <input type="email" id="registerEmail" class="form-control" placeholder="Ex:abc@gmail.com"
+                    name="email" />
+                </div>
+              </div>
+              <!--Phone input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon"><i class="bi bi-telephone"></i> </span>
+                  <input type="tel" id="registerPhone" class="form-control" placeholder="Ex:+8433445506" name="phone" />
+                </div>
+              </div>
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon ti-lock"></span>
+                  <input type="password" id="registerPassword" class="form-control" placeholder="Mật khẩu"
+                    name="password" />
+                  <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
+                </div>
+              </div>
+              <!-- Repeat Password input -->
+              <div class="form-outline mb-4">
+                <div class="div-input">
+                  <span class="icon ti-lock"></span>
+                  <input type="password" id="registerRepeatPassword" class="form-control"
+                    placeholder="Nhập lại mật khẩu" name="re_password" />
+                  <img src="./theme/user_theme/icon/eye-close.svg" alt="">
+                  <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
+                </div>
+              </div>
+              <!-- Submit button -->
+              <button type="Submit" class="btn btn-login mb-4">Đăng ký</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="theme/plugin/jquery-3.6.4.min.js"></script>
+<script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="theme/user_theme/javascript/app.js"></script>
+<script src="theme/user_theme/javascript/form.js"></script>
+<script>
+  (function ($) {
+    $('.btn-showpass').click(function (e) {
+      e.preventDefault();
+      if ($(this).siblings('input').attr('type') == 'password') {
+        $(this).siblings('input[type="password"]').attr('type', 'text');
+      } else {
+        $(this).siblings('input[type="text"]').attr('type', 'password');
+      }
+      $(this).find('i').toggleClass('bi-eye');
+      $(this).find('i').toggleClass('bi-eye-slash');
+    });
+
+  })(window.jQuery);
+</script>
+<!-- user.push({ input.name(): input.val() }); -->
+
+</html>

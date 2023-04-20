@@ -68,8 +68,7 @@
                   <p><a onclick="ShowHide('#signin-form','#forgot-password-form')" class="forgot-password-link">Quên mật
                       khẩu?</a></p>
                   <!-- Register buttons -->
-                  <p>Chưa có tài khoản?<a onclick="ShowHide('#signin-form','#register-form')"
-                      class="forgot-password-link"> Đăng ký</a></p>
+                  <p>Chưa có tài khoản?<a href="register.html" class="forgot-password-link"> Đăng ký</a></p>
                 </div>
               </div>
             </div>
@@ -97,62 +96,6 @@
               <!-- <button type="button" class="btn btn-login mb-4">Tiếp tục</button> -->
               <a type="button" class="btn btn-login mb-4" href="./otp.html">Tiếp
                 tục</a>
-            </div>
-          </form>
-          <form action="" id="register-form" style="display: none;" onsubmit="validateForm(event,'#register-form')">
-            <div class="login-top">
-              <a onclick="ShowHide('#signin-form','#register-form')" class="btn btn-back">
-                <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng ký</a>
-            </div>
-            <div class="login-middle">
-              <img src="./uploads/logo/logo-full-428x104.png" alt="Logo EI
-                  Germeny" class="img-fluid" />
-              <p class="edit-text">Chào mừng bạn đã đến với EI Germany!</p>
-            </div>
-            <div class="register-form">
-              <!-- Name input -->
-              <div class="form-outline mb-4">
-                <div class="div-input">
-                  <span class="icon"><i class="bi bi-person"></i></span>
-                  <input type="text" id="registerName" class="form-control" placeholder="Ex: Nguyễn Văn A"
-                    name="fullname" />
-                </div>
-              </div><!-- Email input -->
-              <div class="form-outline mb-4">
-                <div class="div-input">
-                  <span class="icon-email ti-email"></span>
-                  <input type="email" id="registerEmail" class="form-control" placeholder="Ex:abc@gmail.com"
-                    name="email" />
-                </div>
-              </div>
-              <!--Phone input -->
-              <div class="form-outline mb-4">
-                <div class="div-input">
-                  <span class="icon"><i class="bi bi-telephone"></i> </span>
-                  <input type="tel" id="registerPhone" class="form-control" placeholder="Ex:+8433445506" name="phone" />
-                </div>
-              </div>
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <div class="div-input">
-                  <span class="icon ti-lock"></span>
-                  <input type="password" id="registerPassword" class="form-control" placeholder="Mật khẩu"
-                    name="password" />
-                  <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
-                </div>
-              </div>
-              <!-- Repeat Password input -->
-              <div class="form-outline mb-4">
-                <div class="div-input">
-                  <span class="icon ti-lock"></span>
-                  <input type="password" id="registerRepeatPassword" class="form-control"
-                    placeholder="Nhập lại mật khẩu" name="re_password" />
-                  <img src="./theme/user_theme/icon/eye-close.svg" alt="">
-                  <span class="btn-showpass"><i class="bi bi-eye-slash"></i></span>
-                </div>
-              </div>
-              <!-- Submit button -->
-              <button type="Submit" class="btn btn-login mb-4">Đăng ký</button>
             </div>
           </form>
         </div>
