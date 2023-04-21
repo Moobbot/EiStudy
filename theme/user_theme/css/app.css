@@ -736,6 +736,7 @@ i {
 
 /* register-form */
 #register-form .login-middle {
+  margin-top: 50px;
   margin-bottom: 50px;
 }
 
@@ -745,12 +746,13 @@ i {
 
 .form-outline {
   position: relative;
+  margin-bottom: 36px;
 }
 
 .error-mes {
   position: absolute;
   left: 10px;
-  bottom: -20px;
+  top: 104%;
   color: rgb(255, 41, 41) !important;
   font-size: 13px !important;
   font-weight: 500;
