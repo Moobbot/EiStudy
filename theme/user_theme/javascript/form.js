@@ -68,16 +68,15 @@ function add_warring(input, mess_warning) {
 /**
  * Kiểm tra các đầu vào của form
  * @param {string} input - Thẻ input cần kiểm tra
- * @param {string} type - Loại của đầu vào (ví dụ: 'text', 'email', 'password', ...).
- * @param {string} name - Tên của đầu vào
+ * @param {string} name - Tên của đầu vào (Tên: 'fullname', 'email', 'password','re_password, ...).
  * @param {string} val - Giá trị đầu vào
  * @returns {boolean} - Giá trị boolean trả về
  */
-export function test_input(input, type, name, val) {
+export function test_input(input, name, val) {
   let mess_warning, mess_warning2;
   // input.parent().removeClass("form-warning");
   // input.parent().find(".error-mes").remove();
-  switch (type) {
+  switch (name) {
     case "email":
       // code block
       mess_warning = emailformat(val);
@@ -90,91 +89,100 @@ export function test_input(input, type, name, val) {
       break;
     case "password":
       // code block
-      if (name == "password") {
-        mess_warning = passwordformat(val);
-        if (add_warring(input, mess_warning)) {
-          let input_repassword = input
-            .parents(".js-validateform")
-            .find('input[name="re_password"]');
-          if (input_repassword.length != 0) {
-            mess_warning2 = rePassword(val, input_repassword.val());
-            input_repassword.parent().find(".error-mes").remove();
-            add_warring(input_repassword, mess_warning2);
-          }
+      mess_warning = passwordformat(val);
+      return add_warring(input, mess_warning);
+
+      if (add_warring(input, mess_warning)) {
+        let input_repassword = input
+          .parents(".js-validateform")
+          .find('input[name="re_password"]');
+        if (input_repassword.length != 0) {
+          mess_warning2 = rePassword(val, input_repassword.val());
+          return add_warring(input_repassword, mess_warning2);
         }
+      } else {
+        return false;
       }
-      if (name == "re_password") {
+    case "re_password":
+      let input_password = input
+        .parents(".js-validateform")
+        .find('input[name="password"]');
+      console.log("password = " + input_password.val());
+      console.log("re_password = " + val);
+      mess_warning = rePassword(input_password.val(), val);
+      return add_warring(input, mess_warning);
+      if (add_warring(input, mess_warning)) {
         let input_password = input
           .parents(".js-validateform")
           .find('input[name="password"]');
-        mess_warning = rePassword(input_password.val(), val);
-        add_warring(input, mess_warning);
-        // Kiểm tra mật khẩu`
-        // if (input_password.length != 0) {
-        mess_warning2 = passwordformat(input_password.val());
-        input_password.parent().find(".error-mes").remove();
-        add_warring(input_password, mess_warning2);
-
-        // if (mess_warning2.length != 0) {
-        //   input_password
-        //     .parent()
-        //     .append('<span class="error-mes">' + mess_warning2 + "</span>");
-        //   if (!input_password.parent().hasClass("form-warning")) {
-        //     input_password.parent().addClass("form-warning");
-        //   }
-        //   return false;
-        // } else input_password.parent().removeClass("form-warning");
-        // }
+        if (input_password.length != 0) {
+          mess_warning2 = passwordformat(input_password.val());
+          input_password.parent().find(".error-mes").remove();
+          return add_warring(input_password, mess_warning2);
+        }
+      } else {
+        return false;
       }
       break;
-    case "text":
-      if (name == "fullname") {
-        mess_warning = fullnameFormat(val);
-        add_warring(input, mess_warning);
-      }
+    case "fullname":
+      mess_warning = fullnameFormat(val);
+      return add_warring(input, mess_warning);
       break;
     // default:
     // code block
   }
   return true;
 }
+let number_err = 0;
 // Check form submit
 export function validateRegisterForm(e, id_form) {
   e.preventDefault(); // chặn hoạt động mặc định của form
   // xử lý form
   let checkForm = fail;
-  let number_err = 0;
-  // console.clear();
+  console.clear();
   $(id_form)
     .find("input")
     .each(function () {
-      var input = $(this);
+      let input = $(this);
       let type = input.attr("type");
       let name = input.attr("name");
       let val = input.val();
       number_err += test_input(input, type, name, val) == false ? 1 : 0;
-      console.log(name + "----" + val + "----\nnumber_err = " + number_err);
-      // console.log("<=============>");
+      console.log(
+        "\n<=============>\n" +
+          name +
+          " = " +
+          val +
+          "\nnumber_err = " +
+          number_err +
+          "\n<=============>"
+      );
       $(input).keyup(function (e) {
-        number_err = 0;
         val = input.val();
         // console.clear();
-        number_err += test_input(input, type, name, val) == false ? 1 : 0;
+        number_err = test_input(input, type, name, val) == false ? 1 : 0;
         // checkForm =
         //   test_input(input, type, name, val) == false ? fail : success;
-        console.log(name + "----" + val + "----\nnumber_err = " + number_err);
-        // console.log("<=============>");
+        console.log(
+          "\n<=============>\n" +
+            name +
+            " = " +
+            val +
+            "\nnumber_err = " +
+            number_err +
+            "\n<=============>"
+        );
       });
     });
-  checkForm = number_err !== 0 ? fail : success;
+  checkForm = number_err != 0 ? fail : success;
   console.log("checkForm = " + checkForm + "\n<=============>");
-  if (checkForm == success) {
-    $(id_form).find("input").removeClass("form-warning");
-    if (saveAcc(id_form)) {
-      alert("Tạo tài khoản thành công.");
-      window.location.replace("login.html");
-    } else alert("Có lỗi xảy ra. Vui lòng liên hệ tổng đài.");
-  }
+  // if (checkForm == success) {
+  //   $(id_form).find("input").removeClass("form-warning");
+  //   if (saveAcc(id_form)) {
+  //     alert("Tạo tài khoản thành công.");
+  //     window.location.replace("login.html");
+  //   } else alert("Có lỗi xảy ra. Vui lòng liên hệ tổng đài.");
+  // }
 }
 
 export function checkLogin(e, id_form) {
