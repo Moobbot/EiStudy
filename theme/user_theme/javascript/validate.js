@@ -10,8 +10,14 @@ export const upperCaseLetters = (value) => {
 export const numbers = (value) => {
   return /[0-9]/g.test(value);
 };
-// Validate numbers
-export const textNotNull = (value) => {
+/**
+ * Validate text
+ * @param {text} value - Dữ liệu đầu vào
+ * @returns {boolean}
+ * - Trả về true nếu độ dài đầu vào bằng 0
+ * - Trả về false nếu độ dài đầu vào khác 0
+ */
+export const textNull = (value) => {
   return value.length == 0;
 };
 // Special characters
@@ -20,10 +26,8 @@ export const specialCharacters = (value) => {
 };
 // Validate email
 export const emailformat = (value) => {
-  if (textNotNull(value)) {
-    return "Vui lòng nhập Email!";
-  }
-  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+  if (textNull(value)) return "Vui lòng nhập Email!";
+  else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
     return "Email không đúng đinh dạng!";
   }
 
@@ -33,10 +37,8 @@ export const emailformat = (value) => {
 
 // Validate phone
 export const phoneformat = (value) => {
-  if (textNotNull(value)) {
-    return "Vui lòng nhập số điện thoại của bạn!";
-  }
-  if (value.length < 8 || value.length > 20) {
+  if (textNull(value)) return "Vui lòng nhập số điện thoại của bạn!";
+  else if (value.length < 8 || value.length > 20) {
     return "Số điện thoại không đúng đinh dạng! Số điện thoại có từ 8 đến 20 ký tự.";
   }
 
@@ -44,12 +46,11 @@ export const phoneformat = (value) => {
   // return true;
   // return /(0[3|5|7|8|9])+([0-9]{8})|(\+84)+([0-9]{9})\b/.test(value);
 };
+
 // Validate password
 export const passwordformat = (value) => {
-  if (textNotNull(value)) {
-    return "Vui lòng nhập mật khẩu!";
-  }
-  if (
+  if (textNull(value)) return "Vui lòng nhập mật khẩu!";
+  else if (
     value.length < 8 ||
     !lowerCaseLetters(value) ||
     !upperCaseLetters(value) ||
@@ -64,11 +65,16 @@ export const passwordformat = (value) => {
 
   // return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
 };
+
+/**
+ * Kiểm tra mật khẩu xác nhận
+ * @param {number} password -
+ * @param {string} repassword -
+ * @returns {boolean} - Return text hoặc ""
+ */
 export const rePassword = (password, repassword) => {
-  if (repassword.length == 0) {
-    return "Vui lòng nhập xác nhận mật khẩu!";
-  }
-  if (password !== repassword) {
+  if (repassword.length == 0) return "Vui lòng nhập xác nhận mật khẩu!";
+  else if (repassword != password) {
     return "Mật khẩu xác nhận không giống!";
   }
 
@@ -78,9 +84,7 @@ export const rePassword = (password, repassword) => {
 
 // Validate email
 export const fullnameFormat = (value) => {
-  if (textNotNull(value)) {
-    return "Vui lòng nhập tên của bạn!";
-  }
+  if (textNull(value)) return "Vui lòng nhập tên của bạn!";
 
   return "";
   // return true;

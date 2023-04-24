@@ -31,7 +31,7 @@
               Germeny" class="img-fluid" />
         </div>
         <div class="login-right">
-          <form action="" id="signin-form" class="open-form" onsubmit="checkAcc(event,'#signin-form')">
+          <form action="" id="signin-form" class="open-form js-validateform">
             <div class="login-top">
               <a href="./index.html" class="btn btn-back">
                 <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng nhập</a>
@@ -47,8 +47,8 @@
                 <div class="form-outline">
                   <div class="div-input">
                     <span class="icon ti-email"></span>
-                    <input type="text" id="formAccount" class="form-control" placeholder="Email/Số điện thoại"
-                      name="account" autofocus />
+                    <input type="email" id="formAccount" class="form-control" placeholder="Ex: abc@gmail.com"
+                      name="email" autofocus />
                   </div>
                 </div>
                 <!-- Password input -->
@@ -105,8 +105,21 @@
 </body>
 <script src="theme/plugin/jquery-3.6.4.min.js"></script>
 <script src="theme/plugin/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="/theme/user_theme/javascript/common.js"></script>
 <script src="theme/user_theme/javascript/app.js"></script>
-<script src="theme/user_theme/javascript/form.js"></script>
+<script type="module" src="theme/user_theme/javascript/form.js"></script>
+<script type="module">
+  // sử dụng hàm checkLogin trong file khác
+  import { checkLogin } from '/theme/user_theme/javascript/form.js';
+  (function ($) {
+    $(document).ready(function () {
+      $(".js-validateform").submit(function (event) {
+        event.preventDefault();
+        checkLogin(event, '.js-validateform');
+      });
+    });
+  })(window.jQuery);
+</script>
 <script>
   function ShowHide(id_form1, id_form2) {
     let form1 = $(id_form1);

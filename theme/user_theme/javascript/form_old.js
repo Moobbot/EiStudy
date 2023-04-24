@@ -4,7 +4,6 @@ import {
   passwordformat,
   rePassword,
   fullnameFormat,
-  textNull,
 } from "./validate.js";
 // console.log(phoneformat(4444));
 // SaveAcc
@@ -42,109 +41,129 @@ export function saveAcc(id_form) {
   localStorage.setItem("USER_INFO", JSON.stringify(user));
   return true;
 }
+
 /**
- * Thêm cảnh báo cho Thẻ input kiểm tra
- * @param {string} input - Thẻ input cần kiểm tra
- * @param {string} mess_warning - Tin cảnh báo.
- * @returns {boolean} - Giá trị boolean trả về
- * - false nếu có cảnh vào
- * - true nếu không có
- */
-function add_warring(input, mess_warning) {
-  input.parent().find(".error-mes").remove();
-  if (mess_warning.length != 0) {
-    if (!input.parent().hasClass("form-warning"))
-      input.parent().addClass("form-warning");
-    // input_repassword.parent().find(".error-mes").html(mess_warning2);
-    input
-      .parent()
-      .append('<span class="error-mes">' + mess_warning + "</span>");
-    return false;
-  } else {
-    input.parent().removeClass("form-warning");
-    return true;
-  }
-}
-/**
- * Kiểm tra các đầu vào của form
- * @param {string} input - Thẻ input cần kiểm tra
- * @param {string} type - Loại của đầu vào (ví dụ: 'text', 'email', 'password', ...).
- * @param {string} name - Tên của đầu vào
- * @param {string} val - Giá trị đầu vào
+ * Kiểm tra input
+ * @param {number} input - Thẻ input
+ * @param {string} type - Input type
+ * @param {string} name - Input name
+ * @param {string} val - Input value
  * @returns {boolean} - Giá trị boolean trả về
  */
 export function test_input(input, type, name, val) {
-  let mess_warning, mess_warning2;
-  // input.parent().removeClass("form-warning");
-  // input.parent().find(".error-mes").remove();
+  // let count_err = "";
+  let count_err = fail;
+  let mess_warning;
+  // if (input.parent().hasClass('form-warning')) {
+  input.parent().removeClass("form-warning");
+  input.parent().find(".error-mes").remove();
+  // }
   switch (type) {
     case "email":
       // code block
       mess_warning = emailformat(val);
-      return add_warring(input, mess_warning);
+      if (mess_warning.length != 0) {
+        // count_err += type + "<>";
+        count_err = fail;
+        if (!input.parent().hasClass("form-warning"))
+          input.parent().addClass("form-warning");
+        input
+          .parent()
+          .append('<span class="error-mes">' + mess_warning + "</span>");
+      }
       break;
     //8-20 kí tự
     case "tel":
       mess_warning = phoneformat(val);
-      return add_warring(input, mess_warning);
+      if (mess_warning.length != 0) {
+        // count_err += type + "<>";
+        count_err = fail;
+        if (!input.parent().hasClass("form-warning"))
+          input.parent().addClass("form-warning");
+        input
+          .parent()
+          .append('<span class="error-mes">' + mess_warning + "</span>");
+      }
       break;
     case "password":
       // code block
+      mess_warning = passwordformat(val);
       if (name == "password") {
-        mess_warning = passwordformat(val);
-        if (add_warring(input, mess_warning)) {
-          let input_repassword = input
-            .parents(".js-validateform")
-            .find('input[name="re_password"]');
-          if (input_repassword.length != 0) {
-            mess_warning2 = rePassword(val, input_repassword.val());
-            input_repassword.parent().find(".error-mes").remove();
-            add_warring(input_repassword, mess_warning2);
+        if (mess_warning.length != 0) {
+          // count_err += type + "<>";
+          count_err = fail;
+          if (!input.parent().hasClass("form-warning"))
+            input.parent().addClass("form-warning");
+          input
+            .parent()
+            .append('<span class="error-mes">' + mess_warning + "</span>");
+        }
+        let input_repassword = input
+          .parents(".register-form")
+          .find('input[name="re_password"]');
+        if (input_repassword.length == 0) {
+          let mess_warning2 = rePassword(input_repassword.val(), val);
+          input_repassword.parent().find(".error-mes").remove();
+          if (mess_warning2.length == 0) {
+            // count_err += type + "<>";
+            count_err = fail;
+            input_repassword
+              .parent()
+              .append('<span class="error-mes">' + mess_warning2 + "</span>");
+            if (!input_repassword.parent().hasClass("form-warning")) {
+              input_repassword.parent().addClass("form-warning");
+            }
+          } else {
+            input_repassword.parent().removeClass("form-warning");
           }
         }
       }
       if (name == "re_password") {
-        let input_password = input
-          .parents(".js-validateform")
-          .find('input[name="password"]');
-        mess_warning = rePassword(input_password.val(), val);
-        add_warring(input, mess_warning);
-        // Kiểm tra mật khẩu`
-        // if (input_password.length != 0) {
-        mess_warning2 = passwordformat(input_password.val());
-        input_password.parent().find(".error-mes").remove();
-        add_warring(input_password, mess_warning2);
-
-        // if (mess_warning2.length != 0) {
-        //   input_password
-        //     .parent()
-        //     .append('<span class="error-mes">' + mess_warning2 + "</span>");
-        //   if (!input_password.parent().hasClass("form-warning")) {
-        //     input_password.parent().addClass("form-warning");
-        //   }
-        //   return false;
-        // } else input_password.parent().removeClass("form-warning");
-        // }
+        let val_password = input
+          .parents(".register-form")
+          .find('input[name="password"]')
+          .val();
+        mess_warning = rePassword(val_password, val);
+        if ((name = "password")) {
+          if (mess_warning.length != 0) {
+            // count_err += type + "<>";
+            count_err = fail;
+            if (!input.parent().hasClass("form-warning"))
+              input.parent().addClass("form-warning");
+            input
+              .parent()
+              .append('<span class="error-mes">' + mess_warning + "</span>");
+          }
+        }
       }
       break;
     case "text":
       if (name == "fullname") {
         mess_warning = fullnameFormat(val);
-        add_warring(input, mess_warning);
+        if (mess_warning.length != 0) {
+          // count_err += type + "<>";
+          count_err = fail;
+          if (!input.parent().hasClass("form-warning"))
+            input.parent().addClass("form-warning");
+          input
+            .parent()
+            .append('<span class="error-mes">' + mess_warning + "</span>");
+        }
       }
       break;
     // default:
     // code block
   }
-  return true;
+  console.log("count_err = " + count_err);
+
+  return count_err == 0 ? fail : success;
 }
 // Check form submit
-export function validateRegisterForm(e, id_form) {
+export function validateForm(e, id_form) {
   e.preventDefault(); // chặn hoạt động mặc định của form
   // xử lý form
-  let checkForm = fail;
-  let number_err = 0;
-  // console.clear();
+  let check_number = fail;
+  console.clear();
   $(id_form)
     .find("input")
     .each(function () {
@@ -152,23 +171,24 @@ export function validateRegisterForm(e, id_form) {
       let type = input.attr("type");
       let name = input.attr("name");
       let val = input.val();
-      number_err += test_input(input, type, name, val) == false ? 1 : 0;
-      console.log(name + "----" + val + "----\nnumber_err = " + number_err);
+      if (test_input(input, type, name, val) == success) {
+        check_number = success;
+      }
+      // console.log(name + "----" + val + "----\ncheck_number = " + check_number);
       // console.log("<=============>");
       $(input).keyup(function (e) {
-        number_err = 0;
         val = input.val();
-        // console.clear();
-        number_err += test_input(input, type, name, val) == false ? 1 : 0;
-        // checkForm =
-        //   test_input(input, type, name, val) == false ? fail : success;
-        console.log(name + "----" + val + "----\nnumber_err = " + number_err);
+        console.clear();
+        if (test_input(input, type, name, val) == success) {
+          check_number = success;
+        }
+        // console.log(
+        //   name + "----" + val + "----\ncheck_number = " + check_number
+        // );
         // console.log("<=============>");
       });
     });
-  checkForm = number_err !== 0 ? fail : success;
-  console.log("checkForm = " + checkForm + "\n<=============>");
-  if (checkForm == success) {
+  if (check_number == success) {
     $(id_form).find("input").removeClass("form-warning");
     if (saveAcc(id_form)) {
       alert("Tạo tài khoản thành công.");
@@ -180,7 +200,7 @@ export function validateRegisterForm(e, id_form) {
 export function checkLogin(e, id_form) {
   e.preventDefault(); // chặn hoạt động mặc định của form
   // xử lý form
-  let checkForm = fail;
+  let check_number = fail;
   console.clear();
   $(id_form)
     .find("input")
@@ -190,26 +210,26 @@ export function checkLogin(e, id_form) {
       let name = input.attr("name");
       let val = input.val();
       if (test_input(input, type, name, val) == success) {
-        checkForm = success;
+        check_number = success;
       }
       console.log(name + "----" + val + "----");
-      console.log("checkForm = " + checkForm);
+      console.log("check_number = " + check_number);
       console.log("<=============>");
       $(input).keyup(function (e) {
         val = input.val();
         console.clear();
-        // checkForm = test_input(input, type, name, input.val()) == success ? success : fail;
+        // check_number = test_input(input, type, name, input.val()) == success ? success : fail;
         if (test_input(input, type, name, val) == success) {
-          checkForm = success;
+          check_number = success;
         }
         console.log(name + "----" + val + "----");
-        console.log("checkForm = " + checkForm);
+        console.log("check_number = " + check_number);
         console.log("<=============>");
       });
     });
-  // console.log(checkForm);
+  // console.log(check_number);
 
-  if (checkForm == success) {
+  if (check_number == success) {
     let acc = $(id_form).find('input[id="formAccount"]');
     let acc_val = acc.val();
     let pass = $(id_form).find('input[id="formPassword"]');

@@ -31,7 +31,7 @@
               Germeny" class="img-fluid" />
         </div>
         <div class="login-right">
-          <form action="" id="register-form">
+          <form action="" id="register-form" class="js-validateform">
             <div class="login-top">
               <a href="login.html" class="btn btn-back">
                 <img src="./theme/user_theme/icon/left-arrow-0.png" alt="" class="icon-back" />Đăng ký</a>
@@ -98,13 +98,13 @@
 <script src="/theme/user_theme/javascript/app.js"></script>
 <script type="module" src="/theme/user_theme/javascript/form.js"></script>
 <script type="module">
-  // sử dụng hàm validateForm trong file khác
-  import { validateForm } from '/theme/user_theme/javascript/form.js';
+  // sử dụng hàm validateRegisterForm trong file khác
+  import { validateRegisterForm } from '/theme/user_theme/javascript/form.js';
   (function ($) {
     $(document).ready(function () {
-      $("#register-form").submit(function (event) {
+      $(".js-validateform").submit(function (event) {
         event.preventDefault();
-        validateForm(event, '#register-form');
+        validateRegisterForm(event, '.js-validateform');
       });
     });
   })(window.jQuery);
