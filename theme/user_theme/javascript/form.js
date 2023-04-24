@@ -83,46 +83,23 @@ export function test_input(input, name, val) {
       return add_warring(input, mess_warning);
       break;
     //8-20 kí tự
-    case "tel":
+    case "phoneNumber":
       mess_warning = phoneformat(val);
       return add_warring(input, mess_warning);
       break;
+
     case "password":
       // code block
       mess_warning = passwordformat(val);
       return add_warring(input, mess_warning);
+      break;
 
-      if (add_warring(input, mess_warning)) {
-        let input_repassword = input
-          .parents(".js-validateform")
-          .find('input[name="re_password"]');
-        if (input_repassword.length != 0) {
-          mess_warning2 = rePassword(val, input_repassword.val());
-          return add_warring(input_repassword, mess_warning2);
-        }
-      } else {
-        return false;
-      }
     case "re_password":
       let input_password = input
         .parents(".js-validateform")
         .find('input[name="password"]');
-      console.log("password = " + input_password.val());
-      console.log("re_password = " + val);
       mess_warning = rePassword(input_password.val(), val);
       return add_warring(input, mess_warning);
-      if (add_warring(input, mess_warning)) {
-        let input_password = input
-          .parents(".js-validateform")
-          .find('input[name="password"]');
-        if (input_password.length != 0) {
-          mess_warning2 = passwordformat(input_password.val());
-          input_password.parent().find(".error-mes").remove();
-          return add_warring(input_password, mess_warning2);
-        }
-      } else {
-        return false;
-      }
       break;
     case "fullname":
       mess_warning = fullnameFormat(val);
@@ -147,42 +124,22 @@ export function validateRegisterForm(e, id_form) {
       let type = input.attr("type");
       let name = input.attr("name");
       let val = input.val();
-      number_err += test_input(input, type, name, val) == false ? 1 : 0;
-      console.log(
-        "\n<=============>\n" +
-          name +
-          " = " +
-          val +
-          "\nnumber_err = " +
-          number_err +
-          "\n<=============>"
-      );
+      number_err += test_input(input, name, val) == false ? 1 : 0;
       $(input).keyup(function (e) {
         val = input.val();
-        // console.clear();
-        number_err = test_input(input, type, name, val) == false ? 1 : 0;
-        // checkForm =
-        //   test_input(input, type, name, val) == false ? fail : success;
-        console.log(
-          "\n<=============>\n" +
-            name +
-            " = " +
-            val +
-            "\nnumber_err = " +
-            number_err +
-            "\n<=============>"
-        );
+        console.clear();
+        number_err = test_input(input, name, val) == false ? 1 : 0;
       });
     });
   checkForm = number_err != 0 ? fail : success;
   console.log("checkForm = " + checkForm + "\n<=============>");
-  // if (checkForm == success) {
-  //   $(id_form).find("input").removeClass("form-warning");
-  //   if (saveAcc(id_form)) {
-  //     alert("Tạo tài khoản thành công.");
-  //     window.location.replace("login.html");
-  //   } else alert("Có lỗi xảy ra. Vui lòng liên hệ tổng đài.");
-  // }
+  if (checkForm == success) {
+    $(id_form).find("input").removeClass("form-warning");
+    if (saveAcc(id_form)) {
+      alert("Tạo tài khoản thành công.");
+      window.location.replace("login.html");
+    } else alert("Có lỗi xảy ra. Vui lòng liên hệ tổng đài.");
+  }
 }
 
 export function checkLogin(e, id_form) {
@@ -197,22 +154,22 @@ export function checkLogin(e, id_form) {
       let type = input.attr("type");
       let name = input.attr("name");
       let val = input.val();
-      if (test_input(input, type, name, val) == success) {
+      if (test_input(input, name, val) == success) {
         checkForm = success;
       }
-      console.log(name + "----" + val + "----");
-      console.log("checkForm = " + checkForm);
-      console.log("<=============>");
+      // console.log(name + "----" + val + "----");
+      // console.log("checkForm = " + checkForm);
+      // console.log("<=============>");
       $(input).keyup(function (e) {
         val = input.val();
         console.clear();
         // checkForm = test_input(input, type, name, input.val()) == success ? success : fail;
-        if (test_input(input, type, name, val) == success) {
+        if (test_input(input, name, val) == success) {
           checkForm = success;
         }
-        console.log(name + "----" + val + "----");
-        console.log("checkForm = " + checkForm);
-        console.log("<=============>");
+        // console.log(name + "----" + val + "----");
+        // console.log("checkForm = " + checkForm);
+        // console.log("<=============>");
       });
     });
   // console.log(checkForm);
