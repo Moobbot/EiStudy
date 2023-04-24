@@ -67,12 +67,13 @@ function add_warring(input, mess_warning) {
 }
 /**
  * Kiểm tra các đầu vào của form
+ * @param {string} id_form - Tên của form là id hoặc class
  * @param {string} input - Thẻ input cần kiểm tra
  * @param {string} name - Tên của đầu vào (Tên: 'fullname', 'email', 'password','re_password, ...).
  * @param {string} val - Giá trị đầu vào
  * @returns {boolean} - Giá trị boolean trả về
  */
-export function test_input(input, name, val) {
+export function test_input(id_form, input, name, val) {
   let mess_warning, mess_warning2;
   // input.parent().removeClass("form-warning");
   // input.parent().find(".error-mes").remove();
@@ -96,7 +97,7 @@ export function test_input(input, name, val) {
 
     case "re_password":
       let input_password = input
-        .parents(".js-validateform")
+        .parents(id_form)
         .find('input[name="password"]');
       mess_warning = rePassword(input_password.val(), val);
       return add_warring(input, mess_warning);
@@ -124,15 +125,15 @@ export function validateRegisterForm(e, id_form) {
       let type = input.attr("type");
       let name = input.attr("name");
       let val = input.val();
-      number_err += test_input(input, name, val) == false ? 1 : 0;
+      number_err += test_input(id_form, input, name, val) == false ? 1 : 0;
       $(input).keyup(function (e) {
         val = input.val();
         console.clear();
-        number_err = test_input(input, name, val) == false ? 1 : 0;
+        number_err = test_input(id_form, input, name, val) == false ? 1 : 0;
       });
     });
   checkForm = number_err != 0 ? fail : success;
-  console.log("checkForm = " + checkForm + "\n<=============>");
+  // console.log("checkForm = " + checkForm + "\n<=============>");
   if (checkForm == success) {
     $(id_form).find("input").removeClass("form-warning");
     if (saveAcc(id_form)) {
@@ -146,7 +147,7 @@ export function checkLogin(e, id_form) {
   e.preventDefault(); // chặn hoạt động mặc định của form
   // xử lý form
   let checkForm = fail;
-  console.clear();
+  // console.clear();
   $(id_form)
     .find("input")
     .each(function () {
@@ -154,32 +155,22 @@ export function checkLogin(e, id_form) {
       let type = input.attr("type");
       let name = input.attr("name");
       let val = input.val();
-      if (test_input(input, name, val) == success) {
-        checkForm = success;
-      }
+      checkForm = test_input(id_form, input, name, input.val()) == success ? success : fail;
       // console.log(name + "----" + val + "----");
       // console.log("checkForm = " + checkForm);
       // console.log("<=============>");
       $(input).keyup(function (e) {
         val = input.val();
-        console.clear();
-        // checkForm = test_input(input, type, name, input.val()) == success ? success : fail;
-        if (test_input(input, name, val) == success) {
-          checkForm = success;
-        }
-        // console.log(name + "----" + val + "----");
-        // console.log("checkForm = " + checkForm);
-        // console.log("<=============>");
+        checkForm = test_input(id_form, input, name, input.val()) == success ? success : fail;
       });
     });
-  // console.log(checkForm);
 
   if (checkForm == success) {
     let acc = $(id_form).find('input[id="formAccount"]');
     let acc_val = acc.val();
     let pass = $(id_form).find('input[id="formPassword"]');
     let pass_val = pass.val();
-    // console.log("acc = " + acc_val);
+
     //Get data from localStorage
     let data = JSON.parse(localStorage.getItem("USER_INFO"));
     if (acc_val == data["email"]) {
